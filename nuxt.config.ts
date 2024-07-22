@@ -20,6 +20,8 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxt/icon",
     "@formkit/auto-animate",
-    "@nuxt/fonts"
+    "@nuxt/fonts",
+    "@nuxt/image"
   ],
+  css: ["~/assets/css/main.css"],
 });

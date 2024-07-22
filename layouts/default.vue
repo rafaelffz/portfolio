@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-[#F8F5F1]">
+  <div class="h-full w-full bg-[#F8F5F1] overflow-hidden">
     <header class="flex justify-between items-center px-11 pt-4">
       <div class="font-Raleway text-xl font-semibold tracking-wide flex-1">
         <NuxtLink to="/" class="interactive cursor-pointer">
@@ -23,8 +23,15 @@
 
     <slot />
 
-    <footer class="fixed bottom-0">
-      <div>Footer</div>
+    <footer class="mt-14 pb-4 px-11">
+      <div class="flex items-center text-base justify-between font-Raleway py-6 font-medium tracking-wide">
+        <span class="font-normal">copyright &copy; 2024</span>
+        
+        <div>
+          <!-- <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span> -->
+           Desenvolvido por Rafael
+        </div>
+      </div>
     </footer>
   </div>
 </template>
