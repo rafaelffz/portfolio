@@ -4,11 +4,8 @@ export default defineNuxtConfig({
     head: {
       title: "Rafael | Front-end Developer",
       htmlAttrs: { lang: "pt-br" },
-      meta: [
-        { charset: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-      ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" }], 
+      meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" }],
     },
   },
   devtools: { enabled: true },
@@ -21,7 +18,8 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@formkit/auto-animate",
     "@nuxt/fonts",
-    "@nuxt/image"
+    "@nuxt/image",
+    "@vueuse/motion/nuxt",
   ],
   css: ["~/assets/css/main.css"],
 });

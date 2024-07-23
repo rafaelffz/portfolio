@@ -1,8 +1,26 @@
 <template>
   <div class="w-full h-full mt-44 flex flex-col items-center justify-center text-center overflow-hidden">
     <div class="apresentation interactive text-6xl font-Lora leading-tight tracking-tight">
-      Olá! Eu sou <span class="font-normal">Rafael</span>, <br />
-      <span>desenvolvedor front-end.</span>
+      <div
+        class="opacity-0"
+        v-motion
+        :initial="{ opacity: 0, y: 150 }"
+        :visibleOnce="{ opacity: 1, y: 0 }"
+        :duration="1200"
+        :delay="0"
+      >
+        Olá! Eu sou <span class="font-normal">Rafael,</span>
+      </div>
+      <div
+        class="opacity-0"
+        v-motion
+        :initial="{ opacity: 0, y: 150 }"
+        :visibleOnce="{ opacity: 1, y: 0 }"
+        :duration="1200"
+        :delay="100"
+      >
+        <span>desenvolvedor front-end.</span>
+      </div>
     </div>
 
     <div class="mt-36 interactive flex flex-col items-center justify-center">
@@ -11,45 +29,113 @@
     </div>
 
     <!-- SOBRE -->
-    <div id="about" class="mt-72 w-full px-11 pb-28 relative flex flex-col justify-center">
-      <div class="flex border-b border-b-zinc-900 py-4 pl-2">
+    <div id="about" class="mt-72 w-full px-11 mb-60 relative flex flex-col justify-center">
+      <div
+        class="flex border-b border-b-zinc-900 py-4 pl-2"
+        v-motion
+        :initial="{ opacity: 0, x: -100 }"
+        :visible="{ opacity: 1, x: 0 }"
+        :duration="600"
+      >
         <span class="text-4xl font-Lora interactive">Sobre mim</span>
       </div>
 
-      <div class="flex text-left mt-12">
-        <div class="w-1/2 font-Raleway font-normal text-xl leading-normal pl-2 interactive">
+      <div class="flex text-left mt-8">
+        <div
+          class="w-1/2 font-Raleway font-normal text-xl leading-normal pl-2 interactive"
+          v-motion
+          :initial="{ opacity: 0, y: 150 }"
+          :visible="{ opacity: 1, y: 0 }"
+          :duration="600"
+        >
           Sou um desenvolvedor front-end cursando o 3º ano do Ensino Médio. Apaixonado por tecnologia, estou sempre
           buscando me aperfeiçoar e aprender novas ferramentas para expandir meu conhecimento e habilidades, com o
           objetivo de ajudar as pessoas a resolver seus problemas.
         </div>
 
-        <div class="absolute left-2/3 top-0 interactive">
+        <div
+          class="absolute left-2/3 top-0 interactive"
+          v-motion
+          :initial="{ opacity: 0, y: 150 }"
+          :visibleOnce="{ opacity: 1, y: 0 }"
+          :duration="800"
+        >
           <img src="../assets/images/boy-holding-laptop.png" />
         </div>
       </div>
     </div>
 
-    <div class="my-40 interactive">
+    <!-- <div class="my-40 interactive">
       <Icon class="floating-animation" name="bi:chevron-down" size="18" />
-    </div>
+    </div> -->
 
     <!-- HABILIDADES -->
-    <div id="skills" class="w-full px-11 pb-28 relative flex flex-col justify-center">
-      <div class="flex border-b border-b-zinc-900 py-4 pl-2 mb-4">
+    <div
+      id="skills"
+      class="w-full px-11 mt-60 pb-10 relative flex flex-col items-center justify-center"
+    >
+      <div
+        class="flex w-full items-center justify-center border-b border-b-zinc-900 py-4 pl-2 mb-4"
+        v-motion
+        :initial="{ opacity: 0, y: 100 }"
+        :visible="{ opacity: 1, y: 0 }"
+        :duration="600"
+      >
         <span class="text-4xl font-Lora interactive">Habilidades e Tecnologias</span>
       </div>
 
-      <div class="flex flex-wrap gap-5 uppercase ml-2 w-3/5">
+      <div class="flex flex-wrap pb-24 items-center justify-center gap-5 mt-8 uppercase w-1/2">
         <div
-          class="skill-item w-max flex items-center py-2 px-5 bg-[#c5c3c0] rounded-md z-10 cursor-default"
+          class="skill-item flex py-3 px-6 bg-[#c5c3c0] rounded-md z-10 cursor-default"
           v-for="skill in skills"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"  
+          :visible="{ opacity: 1, y: 0 }"
+          :duration="800"
+          :delay="150"
         >
           <span class="font-Raleway font-bold text-xs -tracking-tighter z-10">{{ skill }}</span>
         </div>
       </div>
-
-      <img src="../assets/images/3d-code-editing.gif" class="absolute left-2/3 -top-40 z-10" />
     </div>
+
+    <!-- PROJETOS -->
+    <!-- <div id="projects" class="mt-72 w-full px-11 mb-60 relative flex flex-col justify-center">
+      <div
+        class="flex border-b border-b-zinc-900 py-4 pl-2"
+        v-motion
+        :initial="{ opacity: 0, x: -100 }"
+        :visible="{ opacity: 1, x: 0 }"
+        :duration="600"
+      >
+        <span class="text-4xl font-Lora interactive">Projetos</span>
+      </div>
+
+      <div class="flex text-left mt-12">
+        <div
+          class="w-1/2 font-Raleway font-normal text-xl leading-normal pl-2 interactive"
+          v-motion
+          :initial="{ opacity: 0, y: 150 }"
+          :visible="{ opacity: 1, y: 0 }"
+          :duration="600"
+          :delay="0"
+        >
+          Sou um desenvolvedor front-end cursando o 3º ano do Ensino Médio. Apaixonado por tecnologia, estou sempre
+          buscando me aperfeiçoar e aprender novas ferramentas para expandir meu conhecimento e habilidades, com o
+          objetivo de ajudar as pessoas a resolver seus problemas.
+        </div>
+
+        <div
+          class="absolute left-2/3 top-0 interactive"
+          v-motion
+          :initial="{ opacity: 0, y: 150 }"
+          :visibleOnce="{ opacity: 1, y: 0 }"
+          :duration="800"
+        >
+          <img src="../assets/images/3d-code-editing.gif" />
+        </div>
+      </div>
+    </div> -->
   </div>
   <Cursor />
 </template>
@@ -66,6 +152,8 @@ const skills = ref<string[]>([
   "nuxt",
   "typescript",
   "tailwindcss",
+  "design",
+  "ui/ux",
 ]);
 </script>
 

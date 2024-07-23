@@ -23,7 +23,7 @@
 
     <slot />
 
-    <footer class="mt-14 pb-4 px-11">
+    <footer class="pb-4 px-11 mt-28">
       <div class="flex items-center text-base justify-between font-Raleway py-6 font-medium tracking-wide">
         <span class="font-normal">copyright &copy; 2024</span>
         
