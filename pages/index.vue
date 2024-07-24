@@ -44,13 +44,14 @@
         <div
           class="w-1/2 font-Raleway font-normal text-xl leading-normal pl-2 interactive"
           v-motion
-          :initial="{ opacity: 0, y: 150 }"
+          :initial="{ opacity: 0, y: 120 }"
           :visible="{ opacity: 1, y: 0 }"
           :duration="600"
+          :delay="150"
         >
-          Sou um desenvolvedor front-end cursando o 3º ano do Ensino Médio. Apaixonado por tecnologia, estou sempre
+          Sou um desenvolvedor front-end cursando o 3º ano do ensino médio. Apaixonado por tecnologia, estou sempre
           buscando me aperfeiçoar e aprender novas ferramentas para expandir meu conhecimento e habilidades, com o
-          objetivo de ajudar as pessoas a resolver seus problemas.
+          objetivo de ajudar as pessoas a resolverem seus problemas.
         </div>
 
         <div
@@ -65,15 +66,8 @@
       </div>
     </div>
 
-    <!-- <div class="my-40 interactive">
-      <Icon class="floating-animation" name="bi:chevron-down" size="18" />
-    </div> -->
-
     <!-- HABILIDADES -->
-    <div
-      id="skills"
-      class="w-full px-11 mt-60 pb-10 relative flex flex-col items-center justify-center"
-    >
+    <div id="skills" class="w-full px-11 mt-60 pb-10 relative flex flex-col items-center justify-center">
       <div
         class="flex w-full items-center justify-center border-b border-b-zinc-900 py-4 pl-2 mb-4"
         v-motion
@@ -86,10 +80,10 @@
 
       <div class="flex flex-wrap pb-24 items-center justify-center gap-5 mt-8 uppercase w-1/2">
         <div
-          class="skill-item flex py-3 px-6 bg-[#c5c3c0] rounded-md z-10 cursor-default"
+          class="skill-item flex py-3 px-6 bg-[#c5c3c0] rounded-md z-10 cursor-default interactive"
           v-for="skill in skills"
           v-motion
-          :initial="{ opacity: 0, y: 100 }"  
+          :initial="{ opacity: 0, y: 100 }"
           :visible="{ opacity: 1, y: 0 }"
           :duration="800"
           :delay="150"
@@ -100,7 +94,7 @@
     </div>
 
     <!-- PROJETOS -->
-    <!-- <div id="projects" class="mt-72 w-full px-11 mb-60 relative flex flex-col justify-center">
+    <div id="projects" class="mt-72 w-full px-11 mb-60 relative flex flex-col justify-center">
       <div
         class="flex border-b border-b-zinc-900 py-4 pl-2"
         v-motion
@@ -111,31 +105,82 @@
         <span class="text-4xl font-Lora interactive">Projetos</span>
       </div>
 
-      <div class="flex text-left mt-12">
+      <div class="flex flex-wrap text-left mt-12 gap-8 w-full">
         <div
-          class="w-1/2 font-Raleway font-normal text-xl leading-normal pl-2 interactive"
+          class="interactive flex flex-col justify-between w-[320px] flex-wrap h-32 bg-white rounded-lg border border-gray-primary shadow-md hover:shadow-lg transition-shadow py-3 px-4"
+          v-for="project in projects"
           v-motion
-          :initial="{ opacity: 0, y: 150 }"
+          :initial="{ opacity: 0, y: 120 }"
           :visible="{ opacity: 1, y: 0 }"
           :duration="600"
-          :delay="0"
+          :delay="150"
         >
-          Sou um desenvolvedor front-end cursando o 3º ano do Ensino Médio. Apaixonado por tecnologia, estou sempre
-          buscando me aperfeiçoar e aprender novas ferramentas para expandir meu conhecimento e habilidades, com o
-          objetivo de ajudar as pessoas a resolver seus problemas.
-        </div>
+          <div id="title" class="flex items-center font-semibold text-lg font-Raleway">
+            {{ project.title }}
+          </div>
 
-        <div
-          class="absolute left-2/3 top-0 interactive"
-          v-motion
-          :initial="{ opacity: 0, y: 150 }"
-          :visibleOnce="{ opacity: 1, y: 0 }"
-          :duration="800"
-        >
-          <img src="../assets/images/3d-code-editing.gif" />
+          <div id="stacks" class="font-Raleway font-medium text-sm" v-for="stack in project.stacks">{{ stack }}</div>
+
+          <div class="flex justify-between">
+            <div class="flex" v-if="project.liveLink">
+              <a
+                :href="project.liveLink"
+                target="_blank"
+                class="flex items-center gap-1 font-Raleway font-semibold text-sm py-1 px-3 rounded-full bg-gray-primary text-white"
+              >
+                Ver projeto
+                <Icon name="tabler:external-link" size="16" />
+              </a>
+            </div>
+
+            <div class="flex" v-if="project.repoLink">
+              <a
+                :href="project.repoLink"
+                target="_blank"
+                class="flex items-center gap-1 font-Raleway font-semibold text-sm py-1 px-3 rounded-full bg-gray-primary text-white"
+              >
+                Ver repositório
+                <Icon name="tabler:external-link" size="18" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div> -->
+    </div>
+
+    <!-- CONTATO -->
+    <div id="projects" class="mt-52 w-full px-11 mb-60 relative flex flex-col justify-center">
+      <div
+        class="flex border-b border-b-zinc-900 py-4 pl-2"
+        v-motion
+        :initial="{ opacity: 0, x: -100 }"
+        :visible="{ opacity: 1, x: 0 }"
+        :duration="600"
+      >
+        <span class="text-4xl font-Lora interactive">Fale comigo!</span>
+      </div>
+
+      <div class="flex flex-col gap-5 mt-12">
+        <div
+          @click="contact.link ? openContact(contact.link) : ''"
+          class="cursor-pointer flex items-center border-2 border-gray-primary w-1/3 justify-between py-2 px-4 interactive"
+          v-for="contact in contacts"
+          v-motion
+          :initial="{ x: 0 }"
+          :hovered="{ x: 10 }"
+        >
+          <div class="flex gap-3 items-center">
+            <Icon :name="contact.icon" size="26" />
+
+            <div class="flex font-Raleway font-bold text-normal self-end">{{ contact.title }}</div>
+          </div>
+
+          <div>
+            <Icon name="tabler:external-link" size="26" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <Cursor />
 </template>
@@ -152,9 +197,69 @@ const skills = ref<string[]>([
   "nuxt",
   "typescript",
   "tailwindcss",
-  "design",
-  "ui/ux",
+  "node",
 ]);
+
+interface Project {
+  title: string;
+  repoLink: string;
+  liveLink?: string;
+  stacks: string[];
+}
+
+const projects = ref<Project[]>([
+  {
+    title: "Portfólio (esse em que você está)",
+    repoLink: "https://github.com/rafaelffz/portfolio",
+    liveLink: "https://rafaelffz.vercel.app",
+    stacks: ["front-end"],
+  },
+  {
+    title: "Portfólio v2",
+    repoLink: "https://github.com/rafaelffz/portfolio-v2",
+    liveLink: "https://rafaelffz.github.io/portfolio-v2/",
+    stacks: ["front-end"],
+  },
+  {
+    title: "Portfólio v1",
+    repoLink: "https://github.com/rafaelffz/portfolio-v1",
+    liveLink: "https://rafaelffz.github.io/portfolio-v1/",
+    stacks: ["front-end"],
+  },
+  {
+    title: "NLW-Expert-Nodejs",
+    repoLink: "https://github.com/rafaelffz/nlw-expert-nodejs",
+    stacks: ["back-end"],
+  },
+]);
+
+interface Contact {
+  icon: string;
+  link: string;
+  title: string;
+}
+
+const contacts = ref<Contact[]>([
+  {
+    icon: "mdi:instagram",
+    link: "https://instagram.com/ffzrafaa_",
+    title: "Instagram",
+  },
+  {
+    icon: "ph:github-logo-bold",
+    link: "https://github.com/rafaelffz",
+    title: "GitHub",
+  },
+  {
+    icon: "mdi:linkedin",
+    link: "https://www.linkedin.com/in/rafaelffz/",
+    title: "LinkedIn",
+  }
+]);
+
+function openContact(link: string) {
+  window.open(link, "_blank");
+}
 </script>
 
 <style scoped>

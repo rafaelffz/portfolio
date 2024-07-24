@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         "Raleway": ["Raleway", "sans-serif"],
         "Lora": ["Lora", "serif"],
+      },
+      colors: {
+        'gray-primary': '#1E1E1E',
       }
     },
   },
