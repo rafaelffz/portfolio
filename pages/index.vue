@@ -1,23 +1,23 @@
 <template>
   <div class="w-full h-full mt-44 flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
-    <div class="apresentation interactive text-6xl font-Lora leading-tight tracking-tight">
+    <div
+      class="presentation interactive text-6xl font-Lora leading-tight tracking-tight"
+    >
       <div
-        class="opacity-0"
         v-motion
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
         :duration="1200"
-        :delay="0"
+        :delay="2000"
       >
         Olá! Eu sou <span class="font-normal">Rafael,</span>
       </div>
       <div
-        class="opacity-0"
         v-motion
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
         :duration="1200"
-        :delay="100"
+        :delay="2000"
       >
         <span>desenvolvedor front-end.</span>
       </div>
@@ -166,26 +166,58 @@
         <span class="text-5xl font-Lora interactive">Fale comigo!</span>
       </div>
 
-      <div class="flex flex-col gap-5 mt-16">
-        <div
-          @click="contact.link ? openContact(contact.link) : ''"
-          class="cursor-pointer flex items-center border-2 border-gray-primary bg-white max-w-[410px] justify-between py-2 px-4 interactive hover:shadow-xl transition-shadow"
-          v-for="contact in contacts"
-          v-motion
-          :initial="{ opacity: 0, x: -100 }"
-          :visible="{ opacity: 1, x: 0 }"
-          :duration="600"
-          :delay="150"
-        >
-          <div class="flex gap-3 items-center">
-            <Icon :name="contact.icon" size="26" />
+      <div class="border flex justify-between mt-16 border-red-600">
+        <div class="flex w-[410px] flex-col gap-5 border border-red-600">
+          <div
+            @click="contact.link ? openContact(contact.link) : ''"
+            class="cursor-pointer flex items-center border-2 border-gray-primary bg-white max-w-[410px] justify-between py-2 px-4 interactive hover:shadow-xl transition-shadow"
+            v-for="contact in contacts"
+            v-motion
+            :initial="{ opacity: 0, x: -100 }"
+            :visible="{ opacity: 1, x: 0 }"
+            :duration="600"
+            :delay="150"
+          >
+            <div class="flex gap-3 items-center">
+              <Icon :name="contact.icon" size="26" />
 
-            <div class="flex font-Raleway font-bold text-normal self-end">{{ contact.title }}</div>
-          </div>
+              <div class="flex font-Raleway font-bold text-normal self-end">{{ contact.title }}</div>
+            </div>
 
-          <div>
-            <Icon name="tabler:external-link" size="26" />
+            <div>
+              <Icon name="tabler:external-link" size="26" />
+            </div>
           </div>
+        </div>
+
+        <div class="border border-red-600">
+          <form>
+            <div class="flex flex-col items-start font-Raleway font-medium text-base">
+              <label for="name">Nome<span class="text-red-600">*</span></label>
+              <input type="text" id="name" class="w-full border-2 border-gray-primary rounded-md py-2 px-2" />
+            </div>
+
+            <div class="flex flex-col items-start font-Raleway font-medium text-base">
+              <label for="name">Email<span class="text-red-600">*</span></label>
+              <input type="email" id="email" class="w-full border-2 border-gray-primary rounded-md py-2 px-2" />
+            </div>
+
+            <div class="flex flex-col items-start font-Raleway font-medium text-base">
+              <label for="name">Telefone</label>
+              <input type="tel" id="phone" class="w-full border-2 border-gray-primary rounded-md py-2 px-2" />
+            </div>
+
+            <div>
+              <label for="message">Mensagem</label>
+              <textarea
+                name="message"
+                id="message"
+                class="w-full border-2 border-gray-primary rounded-md py-2 px-2"
+              ></textarea>
+            </div>
+
+            <button class="w-full bg-red-600 text-white py-2 px-4 rounded-md">Enviar</button>
+          </form>
         </div>
       </div>
     </div>
@@ -194,6 +226,10 @@
 </template>
 
 <script setup lang="ts">
+import { usePreloaderStore } from "~/stores/preloader";
+
+const preloaderStore = usePreloaderStore();
+
 const skills = ref<string[]>([
   "html",
   "css",
@@ -268,6 +304,13 @@ const contacts = ref<Contact[]>([
 function openContact(link: string) {
   window.open(link, "_blank");
 }
+
+onMounted(() => {
+  nextTick(() => {
+    preloaderStore.complete();
+    console.log(preloaderStore.isCompleted);
+  });
+});
 </script>
 
 <style scoped>

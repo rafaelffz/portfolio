@@ -1,4 +1,5 @@
 <template>
+  <Preloader />
   <div class="h-full w-full bg-[#F8F5F1] overflow-hidden">
     <header class="flex justify-between items-center px-16 pt-4">
       <div class="font-Raleway text-xl font-semibold tracking-wide flex-1">
@@ -18,7 +19,9 @@
 
     <footer class="pb-4 px-16 mt-20">
       <div class="flex items-center text-base justify-between font-Raleway py-6 font-medium tracking-wide">
-        <span class="font-normal text-sm"> Images by <a class="font-medium" href="https://icons8.com" target="_blank">Icons8</a> </span>
+        <span class="font-normal text-sm">
+          Images by <a class="font-medium" href="https://icons8.com" target="_blank">Icons8</a>
+        </span>
 
         <div class="flex flex-col items-end">
           <span>Desenvolvido por Rafael</span>

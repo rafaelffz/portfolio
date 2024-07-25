@@ -5,43 +5,35 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+const cursor = ref<HTMLElement | null>(null);
+const cursor2 = ref<HTMLElement | null>(null);
 
-export default defineComponent({
-  setup() {
-    const cursor = ref<HTMLElement | null>(null);
-    const cursor2 = ref<HTMLElement | null>(null);
+onMounted(() => {
+  cursor.value = document.querySelector(".cursor");
+  cursor2.value = document.querySelector(".cursor2");
 
-    onMounted(() => {
-      cursor.value = document.querySelector(".cursor");
-      cursor2.value = document.querySelector(".cursor2");
+  const interactiveElements = document.querySelectorAll(".interactive");
 
-      const interactiveElements = document.querySelectorAll(".interactive");
-
-      interactiveElements.forEach((element) => {
-        element.addEventListener("mouseenter", () => {
-          cursor.value?.classList.add("hovered");
-          cursor2.value?.classList.add("hovered");
-        });
-
-        element.addEventListener("mouseleave", () => {
-          cursor.value?.classList.remove("hovered");
-          cursor2.value?.classList.remove("hovered");
-        });
-      });
-
-      document.addEventListener("mousemove", (e) => {
-        if (cursor.value && cursor2.value) {
-          const x = e.clientX + window.scrollX;
-          const y = e.clientY + window.scrollY;
-          cursor.value.style.cssText = cursor2.value.style.cssText = `left: ${x}px; top: ${y}px;`;
-        }
-      });
+  interactiveElements.forEach((element) => {
+    element.addEventListener("mouseenter", () => {
+      cursor.value?.classList.add("hovered");
+      cursor2.value?.classList.add("hovered");
     });
 
-    return {};
-  },
+    element.addEventListener("mouseleave", () => {
+      cursor.value?.classList.remove("hovered");
+      cursor2.value?.classList.remove("hovered");
+    });
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (cursor.value && cursor2.value) {
+      const x = e.clientX + window.scrollX;
+      const y = e.clientY + window.scrollY;
+      cursor.value.style.cssText = cursor2.value.style.cssText = `left: ${x}px; top: ${y}px;`;
+    }
+  });
 });
 </script>
 

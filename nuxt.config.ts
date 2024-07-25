@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "@nuxt/image",
     "@vueuse/motion/nuxt",
+    '@pinia/nuxt',
   ],
   css: ["~/assets/css/main.css"],
 });
