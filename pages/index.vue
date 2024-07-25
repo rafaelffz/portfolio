@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full mt-44 flex flex-col items-center justify-center text-center overflow-hidden">
+  <div class="w-full h-full mt-44 flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
     <div class="apresentation interactive text-6xl font-Lora leading-tight tracking-tight">
       <div
         class="opacity-0"
@@ -29,7 +29,7 @@
     </div>
 
     <!-- SOBRE -->
-    <div id="about" class="mt-72 w-full px-11 mb-60 relative flex flex-col justify-center">
+    <div id="about" class="mt-72 w-full px-16 mb-60 relative flex flex-col justify-center">
       <div
         class="flex border-b border-b-zinc-900 py-4 pl-2"
         v-motion
@@ -37,7 +37,7 @@
         :visible="{ opacity: 1, x: 0 }"
         :duration="600"
       >
-        <span class="text-4xl font-Lora interactive">Sobre mim</span>
+        <span class="text-5xl font-Lora interactive">Sobre mim</span>
       </div>
 
       <div class="flex text-left mt-8">
@@ -67,7 +67,7 @@
     </div>
 
     <!-- HABILIDADES -->
-    <div id="skills" class="w-full px-11 mt-60 pb-10 relative flex flex-col items-center justify-center">
+    <div id="skills" class="w-full px-16 mt-60 pb-10 relative flex flex-col items-center justify-center">
       <div
         class="flex w-full items-center justify-center border-b border-b-zinc-900 py-4 pl-2 mb-4"
         v-motion
@@ -75,7 +75,7 @@
         :visible="{ opacity: 1, y: 0 }"
         :duration="600"
       >
-        <span class="text-4xl font-Lora interactive">Habilidades e Tecnologias</span>
+        <span class="text-5xl font-Lora interactive">Habilidades e Tecnologias</span>
       </div>
 
       <div class="flex flex-wrap pb-24 items-center justify-center gap-5 mt-8 uppercase w-1/2">
@@ -94,7 +94,7 @@
     </div>
 
     <!-- PROJETOS -->
-    <div id="projects" class="mt-72 w-full px-11 mb-60 relative flex flex-col justify-center">
+    <div id="projects" class="mt-72 w-full px-16 mb-60 relative flex flex-col justify-center">
       <div
         class="flex border-b border-b-zinc-900 py-4 pl-2"
         v-motion
@@ -102,12 +102,12 @@
         :visible="{ opacity: 1, x: 0 }"
         :duration="600"
       >
-        <span class="text-4xl font-Lora interactive">Projetos</span>
+        <span class="text-5xl font-Lora interactive">Projetos</span>
       </div>
 
       <div class="flex flex-wrap text-left mt-12 gap-8 w-full">
         <div
-          class="interactive flex flex-col justify-between w-[320px] flex-wrap h-32 bg-white rounded-lg border border-gray-primary shadow-md hover:shadow-lg transition-shadow py-3 px-4"
+          class="interactive flex flex-col justify-between w-[320px] flex-wrap h-32 bg-white rounded-lg border border-gray-primary shadow-md hover:shadow-2xl transition-shadow py-3 px-4"
           v-for="project in projects"
           v-motion
           :initial="{ opacity: 0, y: 120 }"
@@ -119,7 +119,13 @@
             {{ project.title }}
           </div>
 
-          <div id="stacks" class="font-Raleway font-medium text-sm" v-for="stack in project.stacks">{{ stack }}</div>
+          <div id="stacks" class="flex font-Raleway font-semibold tracking-tight text-sm lowercase">
+            <div class="flex items-center" v-for="stack in project.stacks">
+              <Icon name="mdi:chevron-double-left" size="16" class="bg-blue-700" />
+              <span>{{ stack }}</span>
+              <Icon name="mdi:chevron-double-right" size="16" class="bg-blue-700" />
+            </div>
+          </div>
 
           <div class="flex justify-between">
             <div class="flex" v-if="project.liveLink">
@@ -149,7 +155,7 @@
     </div>
 
     <!-- CONTATO -->
-    <div id="projects" class="mt-52 w-full px-11 mb-60 relative flex flex-col justify-center">
+    <div id="projects" class="mt-52 w-full px-16 mb-20 relative flex flex-col justify-center">
       <div
         class="flex border-b border-b-zinc-900 py-4 pl-2"
         v-motion
@@ -157,17 +163,19 @@
         :visible="{ opacity: 1, x: 0 }"
         :duration="600"
       >
-        <span class="text-4xl font-Lora interactive">Fale comigo!</span>
+        <span class="text-5xl font-Lora interactive">Fale comigo!</span>
       </div>
 
-      <div class="flex flex-col gap-5 mt-12">
+      <div class="flex flex-col gap-5 mt-16">
         <div
           @click="contact.link ? openContact(contact.link) : ''"
-          class="cursor-pointer flex items-center border-2 border-gray-primary w-1/3 justify-between py-2 px-4 interactive"
+          class="cursor-pointer flex items-center border-2 border-gray-primary bg-white max-w-[410px] justify-between py-2 px-4 interactive hover:shadow-xl transition-shadow"
           v-for="contact in contacts"
           v-motion
-          :initial="{ x: 0 }"
-          :hovered="{ x: 10 }"
+          :initial="{ opacity: 0, x: -100 }"
+          :visible="{ opacity: 1, x: 0 }"
+          :duration="600"
+          :delay="150"
         >
           <div class="flex gap-3 items-center">
             <Icon :name="contact.icon" size="26" />
@@ -217,7 +225,7 @@ const projects = ref<Project[]>([
   {
     title: "Portfólio v2",
     repoLink: "https://github.com/rafaelffz/portfolio-v2",
-    liveLink: "https://rafaelffz.github.io/portfolio-v2/",
+    liveLink: "https://rafaelffz-portfolio-v2.vercel.app/",
     stacks: ["front-end"],
   },
   {
@@ -254,7 +262,7 @@ const contacts = ref<Contact[]>([
     icon: "mdi:linkedin",
     link: "https://www.linkedin.com/in/rafaelffz/",
     title: "LinkedIn",
-  }
+  },
 ]);
 
 function openContact(link: string) {
