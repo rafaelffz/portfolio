@@ -6,8 +6,8 @@
         v-motion
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
-        :duration="1200"
-        :delay="2000"
+        :duration="1000"
+        :delay="1400"
       >
         Olá! Eu sou <span class="font-normal">Rafael,</span>
       </div>
@@ -16,8 +16,8 @@
         v-motion
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
-        :duration="1200"
-        :delay="2150"
+        :duration="1000"
+        :delay="1600"
       >
         <span>desenvolvedor front-end.</span>
       </div>
@@ -167,7 +167,7 @@
       </div>
 
       <div class="flex justify-between mt-16 w-full">
-        <div class="flex w-1/3 flex-col gap-5">
+        <div class="flex w-1/3 flex-col gap-5 mt-2">
           <div
             @click="contact.link ? openContact(contact.link) : ''"
             class="cursor-pointer flex items-center border-2 border-gray-primary bg-white w-full justify-between py-3 px-4 interactive hover:shadow-xl transition-shadow"
@@ -191,60 +191,65 @@
         </div>
 
         <div class="w-2/4">
-          <form>
-            <div class="flex flex-col gap-3">
-              <div class="flex flex-col items-start font-medium text-base">
-                <label for="name">Nome<span class="text-red-600">*</span></label>
+          <form @submit.prevent="validateForm">
+            <div class="flex flex-col gap-5 font-bold font-Sans">
+              <div class="flex flex-col items-start text-base">
+                <label for="name">Nome <span class="text-red-600">*</span></label>
                 <input
                   v-model="name"
                   placeholder="Seu nome"
-                  required
                   type="text"
                   id="name"
-                  class="w-full border-2 border-gray-primary rounded-md py-2 px-2"
+                  :class="{ 'border-red-600': errors.name }"
+                  class="font-medium w-full border-2 border-gray-primary rounded-md py-3 px-2"
                 />
               </div>
 
-              <div class="flex flex-col items-start font-medium text-base">
-                <label for="name">Email<span class="text-red-600">*</span></label>
+              <div class="flex flex-col items-start text-base">
+                <label for="name">Email <span class="text-red-600">*</span></label>
                 <input
                   v-model="email"
                   placeholder="Seu email"
-                  required
                   type="email"
                   id="email"
-                  class="w-full border-2 border-gray-primary rounded-md py-2 px-2"
+                  :class="{ 'border-red-600': errors.email }"
+                  class="font-medium w-full border-2 border-gray-primary rounded-md py-3 px-2"
                 />
               </div>
 
-              <div class="flex flex-col items-start font-medium text-base">
+              <div class="flex flex-col items-start text-base">
                 <label for="name">Telefone</label>
                 <input
                   v-model="phone"
                   v-mask="['(##) #####-####']"
                   placeholder="Seu telefone"
-                  required
-                  type="tel"
+                  type="text"
                   id="phone"
-                  class="w-full border-2 border-gray-primary rounded-md py-2 px-2"
+                  :class="{ 'border-red-600': errors.phone }"
+                  class="font-medium w-full border-2 border-gray-primary rounded-md py-3 px-2"
                 />
               </div>
 
-              <div class="flex flex-col items-start font-medium text-base">
-                <label for="message">Mensagem<span class="text-red-600">*</span></label>
+              <div class="flex flex-col items-start text-base">
+                <label for="message">Mensagem <span class="text-red-600">*</span></label>
                 <textarea
                   v-model="message"
                   placeholder="Escreva aqui sua mensagem"
-                  required
                   name="message"
                   id="message"
-                  class="w-full border-2 border-gray-primary rounded-md py-2 px-2 h-32"
+                  :class="{ 'border-red-600': errors.message }"
+                  class="font-medium w-full border-2 border-gray-primary rounded-md py-3 px-2 h-32"
                 ></textarea>
               </div>
             </div>
 
             <div class="flex items-center justify-center mt-5">
-              <button class="w-1/2 text-white py-3 px-4 rounded-md font-semibold bg-gray-primary tracking-wide">Enviar</button>
+              <button
+                type="submit"
+                class="w-1/2 text-white py-3 px-4 rounded-md font-semibold bg-gray-primary tracking-wide"
+              >
+                Enviar
+              </button>
             </div>
           </form>
         </div>
@@ -255,10 +260,69 @@
 </template>
 
 <script setup lang="ts">
-const name = ref<string>("");
-const email = ref<string>("");
-const phone = ref<number>();
-const message = ref<string>("");
+import { z } from "zod";
+
+const name = ref("");
+const email = ref("");
+const phone = ref("");
+const message = ref("");
+
+const errors = ref({
+  name: false,
+  email: false,
+  phone: false,
+  message: false,
+});
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Nome é obrigatório"),
+  email: z.string().trim().email("Email inválido").min(5, "Email é obrigatório"),
+  phone: z
+    .string()
+    .optional()
+    .refine((value) => value === "" || value!.replace(/\D/g, "").length >= 8, {
+      message: "Telefone deve ter no mínimo 8 dígitos",
+    }),
+  message: z.string().min(5, "Mensagem é obrigatória"),
+});
+
+const validateForm = () => {
+  try {
+    const result = contactSchema.parse({
+      name: name.value,
+      email: email.value,
+      phone: phone.value,
+      message: message.value,
+    });
+
+    errors.value = {
+      name: false,
+      email: false,
+      phone: false,
+      message: false,
+    };
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      const fieldErrors = {
+        name: false,
+        email: false,
+        phone: false,
+        message: false,
+      };
+
+      error.errors.forEach((error) => {
+        if (error.path[0] === "name") fieldErrors.name = true;
+        if (error.path[0] === "email") fieldErrors.email = true;
+        if (error.path[0] === "phone") fieldErrors.phone = true;
+        if (error.path[0] === "message") fieldErrors.message = true;
+      });
+
+      errors.value = fieldErrors;
+
+      console.log(error.errors);
+    }
+  }
+};
 
 const skills = ref<string[]>([
   "html",

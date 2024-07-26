@@ -18,9 +18,9 @@
     <slot />
 
     <footer class="pb-4 px-16 mt-20">
-      <div class="flex items-center text-base justify-between font-Raleway py-6 font-medium tracking-wide">
+      <div class="flex items-end text-base justify-between font-Raleway my-6 font-medium tracking-wide">
         <span class="font-normal text-sm">
-          Images by <a class="font-medium" href="https://icons8.com" target="_blank">Icons8</a>
+          Imagens por <a class="font-medium" href="https://icons8.com" target="_blank">Icons8</a>
         </span>
 
         <div class="flex flex-col items-end">

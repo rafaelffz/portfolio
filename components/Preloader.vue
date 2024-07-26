@@ -8,16 +8,11 @@
 
 <script lang="ts" setup>
 import { gsap } from "gsap";
-import { usePreloaderStore } from "~/stores/preloader";
-
-const preloaderStore = usePreloaderStore();
 
 const number = ref<number>(0);
 const progress = computed(() => Math.min(number.value, 100));
 
 onMounted(() => {
-  console.log(preloaderStore.isCompleted);
-
   nextTick(() => {
     setTimeout(() => {
       gsap.to(".preloader__percent", {
@@ -35,15 +30,13 @@ onMounted(() => {
 });
 
 function simulateLoading() {
-  preloaderStore.isCompleted = false;
-
   const interval = setInterval(() => {
     if (number.value < 100) {
       number.value++;
     } else {
       clearInterval(interval);
     }
-  }, 15);
+  }, 7);
 }
 
 watch(progress, (value) => {
@@ -61,7 +54,6 @@ watch(progress, (value) => {
             gsap.set("body", {
               clearProps: "all",
             });
-            preloaderStore.complete();
           },
         }
       );
