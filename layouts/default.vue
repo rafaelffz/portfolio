@@ -1,7 +1,7 @@
 <template>
   <Preloader />
   <div class="h-full w-full bg-[#F8F5F1] overflow-hidden">
-    <header class="flex justify-between items-center px-16 pt-4">
+    <header class="h-14 flex justify-between items-center px-16 pt-4">
       <div class="font-Raleway text-xl font-semibold tracking-wide flex-1">
         <NuxtLink to="/" class="interactive cursor-pointer">
           <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span>

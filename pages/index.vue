@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
-    <div class="pt-[12%] h-[calc(100vh-44px)] presentation interactive">
+    <div class="pt-[12%] h-[calc(100vh-56px)] presentation interactive">
       <div
         class="text-6xl font-Lora leading-tight tracking-tight"
         v-motion
@@ -22,7 +22,7 @@
         <span>desenvolvedor front-end.</span>
       </div>
 
-      <div class="mt-44 interactive flex flex-col items-center justify-center">
+      <div class="mt-[25%] interactive flex flex-col items-center justify-center">
         <span class="tet-sm font-Raleway font-medium">role para mais</span>
         <Icon class="mt-12 floating-animation" name="bi:chevron-down" size="16" />
       </div>
@@ -166,11 +166,11 @@
         <span class="text-5xl font-Lora interactive">Fale comigo!</span>
       </div>
 
-      <div class="border flex justify-between mt-16 border-red-600">
-        <div class="flex w-[410px] flex-col gap-5 border border-red-600">
+      <div class="flex justify-between mt-16 w-full">
+        <div class="flex w-1/3 flex-col gap-5">
           <div
             @click="contact.link ? openContact(contact.link) : ''"
-            class="cursor-pointer flex items-center border-2 border-gray-primary bg-white max-w-[410px] justify-between py-2 px-4 interactive hover:shadow-xl transition-shadow"
+            class="cursor-pointer flex items-center border-2 border-gray-primary bg-white w-full justify-between py-3 px-4 interactive hover:shadow-xl transition-shadow"
             v-for="contact in contacts"
             v-motion
             :initial="{ opacity: 0, x: -100 }"
@@ -190,33 +190,62 @@
           </div>
         </div>
 
-        <div class="border border-red-600">
+        <div class="w-2/4">
           <form>
-            <div class="flex flex-col items-start font-Raleway font-medium text-base">
-              <label for="name">Nome<span class="text-red-600">*</span></label>
-              <input type="text" id="name" class="w-full border-2 border-gray-primary rounded-md py-2 px-2" />
+            <div class="flex flex-col gap-3">
+              <div class="flex flex-col items-start font-medium text-base">
+                <label for="name">Nome<span class="text-red-600">*</span></label>
+                <input
+                  v-model="name"
+                  placeholder="Seu nome"
+                  required
+                  type="text"
+                  id="name"
+                  class="w-full border-2 border-gray-primary rounded-md py-2 px-2"
+                />
+              </div>
+
+              <div class="flex flex-col items-start font-medium text-base">
+                <label for="name">Email<span class="text-red-600">*</span></label>
+                <input
+                  v-model="email"
+                  placeholder="Seu email"
+                  required
+                  type="email"
+                  id="email"
+                  class="w-full border-2 border-gray-primary rounded-md py-2 px-2"
+                />
+              </div>
+
+              <div class="flex flex-col items-start font-medium text-base">
+                <label for="name">Telefone</label>
+                <input
+                  v-model="phone"
+                  v-mask="['(##) #####-####']"
+                  placeholder="Seu telefone"
+                  required
+                  type="tel"
+                  id="phone"
+                  class="w-full border-2 border-gray-primary rounded-md py-2 px-2"
+                />
+              </div>
+
+              <div class="flex flex-col items-start font-medium text-base">
+                <label for="message">Mensagem<span class="text-red-600">*</span></label>
+                <textarea
+                  v-model="message"
+                  placeholder="Escreva aqui sua mensagem"
+                  required
+                  name="message"
+                  id="message"
+                  class="w-full border-2 border-gray-primary rounded-md py-2 px-2 h-32"
+                ></textarea>
+              </div>
             </div>
 
-            <div class="flex flex-col items-start font-Raleway font-medium text-base">
-              <label for="name">Email<span class="text-red-600">*</span></label>
-              <input type="email" id="email" class="w-full border-2 border-gray-primary rounded-md py-2 px-2" />
+            <div class="flex items-center justify-center mt-5">
+              <button class="w-1/2 text-white py-3 px-4 rounded-md font-semibold bg-gray-primary tracking-wide">Enviar</button>
             </div>
-
-            <div class="flex flex-col items-start font-Raleway font-medium text-base">
-              <label for="name">Telefone</label>
-              <input type="tel" id="phone" class="w-full border-2 border-gray-primary rounded-md py-2 px-2" />
-            </div>
-
-            <div>
-              <label for="message">Mensagem</label>
-              <textarea
-                name="message"
-                id="message"
-                class="w-full border-2 border-gray-primary rounded-md py-2 px-2"
-              ></textarea>
-            </div>
-
-            <button class="w-full bg-red-600 text-white py-2 px-4 rounded-md">Enviar</button>
           </form>
         </div>
       </div>
@@ -226,9 +255,10 @@
 </template>
 
 <script setup lang="ts">
-import { usePreloaderStore } from "~/stores/preloader";
-
-const preloaderStore = usePreloaderStore();
+const name = ref<string>("");
+const email = ref<string>("");
+const phone = ref<number>();
+const message = ref<string>("");
 
 const skills = ref<string[]>([
   "html",
@@ -304,13 +334,6 @@ const contacts = ref<Contact[]>([
 function openContact(link: string) {
   window.open(link, "_blank");
 }
-
-onMounted(() => {
-  nextTick(() => {
-    preloaderStore.complete();
-    console.log(preloaderStore.isCompleted);
-  });
-});
 </script>
 
 <style scoped>

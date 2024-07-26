@@ -18,6 +18,8 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
 
+  plugins: ["~/plugins/vue-the-mask.js"],
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
