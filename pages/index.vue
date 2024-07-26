@@ -1,9 +1,8 @@
 <template>
-  <div class="w-full h-full mt-44 flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
-    <div
-      class="presentation interactive text-6xl font-Lora leading-tight tracking-tight"
-    >
+  <div class="w-full h-full flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
+    <div class="pt-[12%] h-[calc(100vh-44px)] presentation interactive">
       <div
+        class="text-6xl font-Lora leading-tight tracking-tight"
         v-motion
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
@@ -13,6 +12,7 @@
         Olá! Eu sou <span class="font-normal">Rafael,</span>
       </div>
       <div
+        class="text-6xl font-Lora leading-tight tracking-tight"
         v-motion
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
@@ -21,11 +21,11 @@
       >
         <span>desenvolvedor front-end.</span>
       </div>
-    </div>
 
-    <div class="mt-36 interactive flex flex-col items-center justify-center">
-      <span class="font-Raleway font-medium">role para mais</span>
-      <Icon class="mt-12 floating-animation" name="bi:chevron-down" size="16" />
+      <div class="mt-44 interactive flex flex-col items-center justify-center">
+        <span class="tet-sm font-Raleway font-medium">role para mais</span>
+        <Icon class="mt-12 floating-animation" name="bi:chevron-down" size="16" />
+      </div>
     </div>
 
     <!-- SOBRE -->
