@@ -17,7 +17,7 @@
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
         :duration="1200"
-        :delay="2000"
+        :delay="2150"
       >
         <span>desenvolvedor front-end.</span>
       </div>

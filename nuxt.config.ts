@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   pages: true,
+  ssr: false,
+
   app: {
     head: {
       title: "Rafael | Front-end Developer",
@@ -9,10 +11,13 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" }],
     },
   },
+
   devtools: { enabled: true },
+
   typescript: {
     typeCheck: true,
   },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
@@ -21,7 +26,9 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "@nuxt/image",
     "@vueuse/motion/nuxt",
-    '@pinia/nuxt',
+    "@pinia/nuxt",
   ],
+
   css: ["~/assets/css/main.css"],
+  compatibilityDate: "2024-07-26",
 });
