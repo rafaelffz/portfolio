@@ -1,6 +1,7 @@
 <template>
+  <ScrollIndicator :sections="['presentation', 'about', 'skills', 'projects', 'contact']" />
   <div class="w-full h-full flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
-    <div class="pt-[12%] h-[calc(100vh-56px)] presentation interactive">
+    <div id="presentation" class="pt-[12%] h-[calc(100vh-56px)] presentation interactive">
       <div
         class="text-6xl font-Lora leading-tight tracking-tight"
         v-motion
@@ -155,7 +156,7 @@
     </div>
 
     <!-- CONTATO -->
-    <div id="projects" class="mt-52 w-full px-16 mb-20 relative flex flex-col justify-center">
+    <div id="contact" class="mt-52 w-full px-16 mb-20 relative flex flex-col justify-center">
       <div
         class="flex border-b border-b-zinc-900 py-4"
         v-motion
@@ -256,7 +257,6 @@
       </div>
     </div>
   </div>
-  <Cursor />
 </template>
 
 <script setup lang="ts">
