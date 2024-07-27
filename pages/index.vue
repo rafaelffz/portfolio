@@ -31,7 +31,7 @@
     <!-- SOBRE -->
     <div id="about" class="mt-72 w-full px-16 mb-60 relative flex flex-col justify-center">
       <div
-        class="flex border-b border-b-zinc-900 py-4 pl-2"
+        class="flex border-b border-b-zinc-900 py-4"
         v-motion
         :initial="{ opacity: 0, x: -100 }"
         :visible="{ opacity: 1, x: 0 }"
@@ -42,7 +42,7 @@
 
       <div class="flex text-left mt-8">
         <div
-          class="w-1/2 font-Raleway font-normal text-xl leading-normal pl-2 interactive"
+          class="w-1/2 font-Raleway font-normal text-xl leading-normal interactive"
           v-motion
           :initial="{ opacity: 0, y: 120 }"
           :visible="{ opacity: 1, y: 0 }"
@@ -69,7 +69,7 @@
     <!-- HABILIDADES -->
     <div id="skills" class="w-full px-16 mt-60 pb-10 relative flex flex-col items-center justify-center">
       <div
-        class="flex w-full items-center justify-center border-b border-b-zinc-900 py-4 pl-2 mb-4"
+        class="flex w-full items-center justify-center border-b border-b-zinc-900 py-4 mb-4"
         v-motion
         :initial="{ opacity: 0, y: 100 }"
         :visible="{ opacity: 1, y: 0 }"
@@ -96,7 +96,7 @@
     <!-- PROJETOS -->
     <div id="projects" class="mt-72 w-full px-16 mb-60 relative flex flex-col justify-center">
       <div
-        class="flex border-b border-b-zinc-900 py-4 pl-2"
+        class="flex border-b border-b-zinc-900 py-4"
         v-motion
         :initial="{ opacity: 0, x: -100 }"
         :visible="{ opacity: 1, x: 0 }"
@@ -157,7 +157,7 @@
     <!-- CONTATO -->
     <div id="projects" class="mt-52 w-full px-16 mb-20 relative flex flex-col justify-center">
       <div
-        class="flex border-b border-b-zinc-900 py-4 pl-2"
+        class="flex border-b border-b-zinc-900 py-4"
         v-motion
         :initial="{ opacity: 0, x: -100 }"
         :visible="{ opacity: 1, x: 0 }"
@@ -167,10 +167,10 @@
       </div>
 
       <div class="flex justify-between mt-16 w-full">
-        <div class="flex w-1/3 flex-col gap-5 mt-2">
+        <div class="flex w-1/3 flex-col gap-5 mt-3">
           <div
             @click="contact.link ? openContact(contact.link) : ''"
-            class="cursor-pointer flex items-center border-2 border-gray-primary bg-white w-full justify-between py-3 px-4 interactive hover:shadow-xl transition-shadow"
+            class="cursor-pointer flex items-center border-2 border-gray-primary bg-white w-full justify-between py-3 px-4 interactive hover:shadow-lg transition-shadow"
             v-for="contact in contacts"
             v-motion
             :initial="{ opacity: 0, x: -100 }"
@@ -288,7 +288,7 @@ const contactSchema = z.object({
 
 const validateForm = () => {
   try {
-    const result = contactSchema.parse({
+    contactSchema.parse({
       name: name.value,
       email: email.value,
       phone: phone.value,
@@ -318,8 +318,6 @@ const validateForm = () => {
       });
 
       errors.value = fieldErrors;
-
-      console.log(error.errors);
     }
   }
 };

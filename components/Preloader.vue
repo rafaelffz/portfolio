@@ -1,6 +1,6 @@
 <template>
   <div class="preloader fixed inset-0 z-50 flex items-center justify-center bg-black text-white">
-    <div class="preloader__percent text-8xl opacity-0 transition-opacity duration-100">
+    <div class="preloader__percent text-8xl opacity-0 transition-opacity duration-100 font-Sans font-semibold">
       {{ progress ? progress : 0 }}%
     </div>
   </div>
