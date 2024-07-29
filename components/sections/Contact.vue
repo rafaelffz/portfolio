@@ -35,7 +35,7 @@
       </div>
 
       <div class="w-2/4">
-        <form @submit.prevent="validateForm">
+        <form>
           <div class="flex flex-col gap-5 font-bold font-Sans">
             <div class="flex flex-col items-start text-base">
               <label for="name">Nome <span class="text-red-600">*</span></label>
@@ -87,12 +87,21 @@
             </div>
           </div>
 
-          <div class="flex items-center justify-center mt-5">
+          <div class="flex w-full items-center justify-center mt-5">
             <button
               type="submit"
               class="w-1/2 text-white py-3 px-4 rounded-md font-semibold bg-gray-primary tracking-wide hover:shadow-xl transition-shadow"
+              @click.prevent="validateForm"
             >
-              Enviar
+              <span v-if="loading" class="animation-button">
+                <Icon name="eos-icons:loading" size="16" />
+              </span>
+
+              <span v-if="!loading && !submitted" class="animation-button"> Enviar </span>
+
+              <span v-if="submitted" class="animation-button">
+                <Icon name="material-symbols:check" size="16" />
+              </span>
             </button>
           </div>
         </form>
@@ -137,6 +146,9 @@ const email = ref("");
 const phone = ref("");
 const message = ref("");
 
+const loading = ref(false);
+const submitted = ref(false);
+
 const errors = ref({
   name: false,
   email: false,
@@ -156,7 +168,7 @@ const contactSchema = z.object({
   message: z.string().min(5, "Mensagem é obrigatória"),
 });
 
-const validateForm = () => {
+const validateForm = async () => {
   try {
     contactSchema.parse({
       name: name.value,
@@ -171,6 +183,15 @@ const validateForm = () => {
       phone: false,
       message: false,
     };
+
+    loading.value = true;
+    submitted.value = false;
+    await sendForm();
+
+    setTimeout(() => {
+      submitted.value = false;
+      loading.value = false;
+    }, 750);
   } catch (error) {
     if (error instanceof z.ZodError) {
       const fieldErrors = {
@@ -189,8 +210,48 @@ const validateForm = () => {
 
       errors.value = fieldErrors;
     }
+  } finally {
+    loading.value = false;
+  }
+};
+
+const sendForm = async () => {
+  try {
+    await $fetch("https://formsubmit.co/ajax/429d8e2fc88e26a74d365c6b5c44cc62", {
+      method: "POST",
+      body: JSON.stringify({
+        name: name.value,
+        email: email.value,
+        phone: phone.value,
+        message: message.value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    submitted.value = true;
+  } catch (error) {
+    throw new Error("Erro ao enviar formulário");
+  } finally {
+    loading.value = false;
   }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@keyframes button-animation {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-button {
+  animation: button-animation 0.5s ease-out;
+}
+</style>

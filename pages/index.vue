@@ -1,5 +1,5 @@
 <template>
-  <ScrollIndicator :sections="['presentation', 'about', 'skills', 'projects', 'contact']" />
+  <ScrollIndicator />
   <div class="w-full h-full flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
     <div id="presentation" class="pt-[12%] h-[calc(100vh-56px)] presentation interactive">
       <div
