@@ -19,3 +19,8 @@
   background-color: #707070;
   border-radius: 2px;
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 56px;
+}

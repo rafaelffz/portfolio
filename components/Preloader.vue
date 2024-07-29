@@ -51,6 +51,7 @@ const number = ref<number>(0);
 const progress = computed(() => Math.min(number.value, 100));
 
 onMounted(() => {
+  document.body.style.overflow = "hidden";
   animateTypewriter();
 });
 
@@ -130,6 +131,7 @@ watch(progress, (value) => {
           clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
           duration: 0.7,
           onComplete() {
+            document.body.style.overflow = "";
             gsap.set("body", {
               clearProps: "all",
             });
@@ -141,7 +143,7 @@ watch(progress, (value) => {
 });
 </script>
 
-<style scoped>
+<style>
 .preloader__percent {
   opacity: 0;
 }

@@ -39,27 +39,9 @@ interface Menu {
 }
 
 const menus = ref<Menu[]>([
-  {
-    name: "sobre",
-    link: "/about",
-  },
-  {
-    name: "habilidades",
-    link: "/skills",
-  },
-  {
-    name: "projetos",
-    link: "/projects",
-  },
-  {
-    name: "contato",
-    link: "/contact",
-  },
+  { name: "sobre", link: "#about" },
+  { name: "habilidades", link: "#skills" },
+  { name: "projetos", link: "#projects" },
+  { name: "contato", link: "#contact" },
 ]);
 </script>
-
-<style scoped>
-a.router-link-active {
-  font-weight: 600;
-}
-</style>
