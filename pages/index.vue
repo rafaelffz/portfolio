@@ -61,30 +61,4 @@
 .floating-animation {
   animation: floating 3s infinite;
 }
-
-.skill-item {
-  position: relative;
-  overflow: hidden;
-  transition: color 0.2s;
-}
-
-.skill-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #313131;
-  transform: translateX(-105%);
-  transition: transform 0.2s;
-}
-
-.skill-item:hover::before {
-  transform: translateX(0);
-}
-
-.skill-item:hover {
-  color: white;
-}
 </style>
