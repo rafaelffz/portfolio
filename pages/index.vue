@@ -1,6 +1,6 @@
 <template>
   <div data-scroll-container class="w-full h-full flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
-    <div id="presentation" class="pt-[12%] h-[calc(100vh-56px)] presentation interactive">
+    <div id="presentation" class="pt-[15%] h-[calc(100vh-56px)] presentation interactive">
       <div
         class="text-6xl font-Lora leading-tight tracking-tight"
         v-motion
