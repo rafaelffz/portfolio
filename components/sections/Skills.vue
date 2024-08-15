@@ -1,5 +1,5 @@
 <template>
-  <div id="skills" class="w-full px-16 mt-[30%] pb-10 relative flex flex-col items-center justify-center">
+  <div id="skills" class="w-full px-16 relative flex flex-col items-center justify-center">
     <div
       class="flex w-full items-center justify-center border-b border-b-zinc-900 py-4 mb-4"
       v-motion

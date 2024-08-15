@@ -1,5 +1,5 @@
 <template>
-  <div id="projects" class="mt-[30%] w-full px-16 mb-60 relative flex flex-col justify-center">
+  <div id="projects" class="w-full px-16 relative flex flex-col justify-center">
     <div
       class="flex border-b border-b-zinc-900 py-4"
       v-motion
@@ -12,7 +12,7 @@
 
     <div class="flex flex-wrap text-left mt-12 gap-8 w-full">
       <div
-        class="interactive flex flex-col justify-between w-[320px] flex-wrap h-32 bg-white rounded-lg border border-gray-primary shadow-md hover:shadow-2xl transition-shadow py-3 px-4"
+        class="interactive flex flex-col justify-between w-[320px] flex-wrap h-32 bg-white rounded-lg border border-neutral-500 shadow-md hover:shadow-2xl transition-shadow py-3 px-4"
         v-for="project in projects"
         v-motion
         :initial="{ opacity: 0, y: 120 }"
@@ -90,6 +90,11 @@ const projects = ref<Project[]>([
   {
     title: "NLW-Expert-Nodejs",
     repoLink: "https://github.com/rafaelffz/nlw-expert-nodejs",
+    stacks: ["back-end"],
+  },
+  {
+    title: "Bookings API",
+    repoLink: "https://github.com/rafaelffz/bookings-api",
     stacks: ["back-end"],
   },
 ]);

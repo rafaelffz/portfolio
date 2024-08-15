@@ -1,6 +1,5 @@
 <template>
-  <ScrollIndicator />
-  <div class="w-full h-full flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
+  <div data-scroll-container class="w-full h-full flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
     <div id="presentation" class="pt-[12%] h-[calc(100vh-56px)] presentation interactive">
       <div
         class="text-6xl font-Lora leading-tight tracking-tight"
@@ -29,21 +28,25 @@
       </div>
     </div>
 
-    <!-- SOBRE -->
-    <SectionsAbout />
+    <div class="flex flex-col gap-64">
+      <!-- SOBRE -->
+      <SectionsAbout />
 
-    <!-- HABILIDADES -->
-    <SectionsSkills />
+      <!-- HABILIDADES -->
+      <SectionsSkills />
 
-    <!-- PROJETOS -->
-    <SectionsProjects />
+      <!-- PROJETOS -->
+      <SectionsProjects />
 
-    <!-- CONTATO -->
-    <SectionsContact />
+      <!-- CONTATO -->
+      <SectionsContact />
+    </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+</script>
 
 <style scoped>
 @keyframes floating {

@@ -1,5 +1,5 @@
 <template>
-  <div id="about" class="w-full mt-[30%] px-16 relative flex flex-col justify-center">
+  <div id="about" class="w-full mt-64 px-16 relative flex flex-col justify-center">
     <div
       class="flex border-b border-b-zinc-900 py-4"
       v-motion
@@ -58,12 +58,30 @@
         :delay="100"
       >
         <div class="flex justify-between items-center" v-for="experience in experiences">
-          <div class="flex flex-col gap-2 items-start">
+          <div class="flex flex-col items-start gap-2">
             <div class="font-Sans font-medium text-3xl">{{ experience.company }}</div>
-            <div
-              class="capitalize border border-gray-primary px-2 py-1.5 rounded-lg text-xs font-Sans font-semibold w-max"
-            >
+
+            <div class="capitalize border border-gray-primary px-2 py-1.5 rounded-lg text-xs font-Sans font-bold w-max">
               {{ experience.position }}
+            </div>
+
+            <div class="mb-1 -ml-1">
+              <div class="flex font-Sans items-center justify-start font-medium" v-for="about in experience.about">
+                <Icon name="ph:dot-outline-fill" size="16" />
+                {{ about }}
+              </div>
+            </div>
+
+            <div class="flex gap-2 items-center">
+              <div
+                class="items-center rounded-md capitalize text-xs font-Sans font-bold"
+                v-for="(tech, index) in experience.techs"
+                :key="index"
+              >
+                <span class="text-blue-700">&lt;</span>
+                {{ tech }}
+                <span class="text-blue-700">&gt;</span>
+              </div>
             </div>
           </div>
 
@@ -83,6 +101,8 @@ interface Experience {
   location: string;
   modality: string;
   position: string;
+  about: string[];
+  techs: string[];
   period: string;
 }
 
@@ -92,6 +112,8 @@ const experiences = ref<Experience[]>([
     location: "Bilac - BR",
     modality: "remoto",
     position: "Estágio Desenvolvedor Front-End",
+    about: ["Desenvolvimento e manutenção de páginas web", "Integração de APIs", "Criação de layouts"],
+    techs: ["JavaScript", "VueJS", "Vuetify", "Axios", "Git"],
     period: "dez 2023 ~ atual",
   },
 ]);
