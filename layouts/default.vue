@@ -9,19 +9,25 @@
       data-scroll-target="#scroll-container"
     ></div>
 
-    <header class="h-14 flex justify-between items-center px-16 pt-4">
-      <div class="font-Raleway text-xl font-semibold tracking-wide flex-1">
-        <NuxtLink to="/" class="interactive cursor-pointer">
-          <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span>
-        </NuxtLink>
+    <header
+      class="fixed w-full h-14 flex justify-between px-16 pt-4 z-30 bg-[#F8F5F1]"
+      data-scroll
+      data-scroll-sticky
+      data-scroll-target="#scroll-container"
+    >
+      <div
+        class="font-Raleway text-xl font-semibold tracking-wide flex-1 cursor-pointer"
+        @click="scroll.scrollTo('#presentation')"
+      >
+        <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span>
       </div>
 
-      <div class="teste flex gap-6 capitalize font-Raleway text-base font-medium text-black">
+      <div class="flex gap-6 capitalize font-Raleway text-base font-medium text-black">
         <div
           class="interactive cursor-pointer transition-all"
           v-for="(menu, index) in menus"
           :key="index"
-          @click="scroll.scrollTo(menu.link)"
+          @click="scrollToSection(menu.link)"
         >
           {{ menu.name }}
         </div>
@@ -49,11 +55,32 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+interface Menu {
+  name: string;
+  link: string;
+}
+
+const menus = ref<Menu[]>([
+  { name: "sobre", link: "#about" },
+  { name: "habilidades", link: "#skills" },
+  { name: "projetos", link: "#projects" },
+  { name: "contato", link: "#contact" },
+]);
+
 gsap.registerPlugin(ScrollTrigger);
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
 let scroll: any;
+let scrollPaddingTop: number = 56;
+
+const scrollToSection = (selector: string) => {
+  const targetElement = document.querySelector(selector) as HTMLElement;
+  if (targetElement) {
+    const offsetTop = targetElement.offsetTop - scrollPaddingTop;
+    scroll.scrollTo(offsetTop);
+  }
+};
 
 onMounted(() => {
   scroll = new LocomotiveScroll({
@@ -67,16 +94,4 @@ onMounted(() => {
     gsap.to("#scroll-indicator", { width: `${progress * 100}%`, duration: 0.25 });
   });
 });
-
-interface Menu {
-  name: string;
-  link: string;
-}
-
-const menus = ref<Menu[]>([
-  { name: "sobre", link: "#about" },
-  { name: "habilidades", link: "#skills" },
-  { name: "projetos", link: "#projects" },
-  { name: "contato", link: "#contact" },
-]);
 </script>
