@@ -10,19 +10,19 @@
     ></div>
 
     <header
-      class="fixed w-full h-14 flex justify-between px-16 pt-4 z-30 bg-[#F8F5F1]"
+      class="fixed w-full h-14 flex justify-between px-10 sm:px-16 pt-4 z-30 bg-[#F8F5F1]"
       data-scroll
       data-scroll-sticky
       data-scroll-target="#scroll-container"
     >
       <div
         class="font-Raleway text-xl font-semibold tracking-wide flex-1 cursor-pointer"
-        @click="scroll.scrollTo('#presentation')"
+        @click="scroll.scrollTo('#hero')"
       >
         <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span>
       </div>
 
-      <div class="flex gap-6 capitalize font-Raleway text-base font-medium text-black">
+      <div class="hidden sm:flex gap-6 capitalize font-Raleway text-base font-medium text-black">
         <div
           class="interactive cursor-pointer transition-all"
           v-for="(menu, index) in menus"
@@ -36,15 +36,15 @@
 
     <slot />
 
-    <footer class="pb-4 px-16 mt-36">
+    <footer class="pb-4 px-5 sm:px-16 mt-36">
       <div class="flex items-end text-base justify-between font-Raleway my-6 font-medium tracking-wide">
-        <span class="font-normal text-sm">
+        <span class="font-normal text-xs sm:text-sm">
           Imagens por <a class="font-medium" href="https://icons8.com" target="_blank">Icons8</a>
         </span>
 
-        <div class="flex flex-col items-end">
+        <div class="flex flex-col items-end text-xs sm:text-base">
           <span>Desenvolvido por Rafael</span>
-          <span class="font-normal text-sm">copyright &copy; 2024</span>
+          <span class="font-normal text-xs sm:text-sm">copyright &copy; 2024</span>
         </div>
       </div>
     </footer>

@@ -29,7 +29,12 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@vueuse/motion/nuxt",
     "@pinia/nuxt",
+    'nuxt-particles'
   ],
+
+  particles: {
+    lazy: false,
+  },
 
   css: ["~/assets/css/main.css"],
   compatibilityDate: "2024-07-26",

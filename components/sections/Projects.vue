@@ -1,5 +1,5 @@
 <template>
-  <div id="projects" class="w-full px-16 relative flex flex-col justify-center">
+  <div id="projects" class="w-full mt-[30%] px-5 sm:px-16 relative flex flex-col justify-center">
     <div
       class="flex border-b border-b-zinc-900 py-4"
       v-motion
@@ -10,9 +10,9 @@
       <span class="text-5xl font-Lora interactive">Projetos</span>
     </div>
 
-    <div class="flex flex-wrap text-left mt-12 gap-8 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 text-left mt-12 gap-8 w-full">
       <div
-        class="interactive flex flex-col justify-between w-[320px] flex-wrap h-32 bg-white rounded-lg border border-neutral-500 shadow-md hover:shadow-2xl transition-shadow py-3 px-4"
+        class="interactive flex flex-col justify-between w-full md:w-[300px] h-min-32 flex-wrap bg-white rounded-lg border border-neutral-500 shadow-md hover:shadow-2xl transition-shadow py-3 px-4"
         v-for="project in projects"
         v-motion
         :initial="{ opacity: 0, y: 120 }"
@@ -20,12 +20,12 @@
         :duration="600"
         :delay="150"
       >
-        <div id="title" class="flex items-center font-semibold text-lg font-Raleway">
+        <div id="title" class="flex flex-wrap text-wrap items-center font-semibold text-lg font-Raleway">
           {{ project.title }}
         </div>
 
         <div id="stacks" class="flex font-Raleway font-semibold tracking-tight text-sm lowercase">
-          <div class="flex items-center" v-for="stack in project.stacks">
+          <div class="flex items-center py-2" v-for="stack in project.stacks">
             <Icon name="mdi:chevron-double-left" size="16" class="bg-blue-700" />
             <span>{{ stack }}</span>
             <Icon name="mdi:chevron-double-right" size="16" class="bg-blue-700" />
@@ -37,7 +37,7 @@
             <a
               :href="project.liveLink"
               target="_blank"
-              class="flex items-center gap-1 font-Raleway font-semibold text-sm py-1 px-3 rounded-full bg-gray-primary text-white"
+              class="flex items-center gap-1 font-Raleway font-semibold text-xs md:text-sm py-1 px-3 rounded-full bg-gray-primary text-white"
             >
               Ver projeto
               <Icon name="tabler:external-link" size="16" />
@@ -48,7 +48,7 @@
             <a
               :href="project.repoLink"
               target="_blank"
-              class="flex items-center gap-1 font-Raleway font-semibold text-sm py-1 px-3 rounded-full bg-gray-primary text-white"
+              class="flex items-center gap-1 font-Raleway font-semibold text-xs md:text-sm py-1 px-3 rounded-full bg-gray-primary text-white"
             >
               Ver repositório
               <Icon name="tabler:external-link" size="18" />
@@ -70,7 +70,7 @@ interface Project {
 
 const projects = ref<Project[]>([
   {
-    title: "Portfólio (esse em que você está)",
+    title: "Portfólio (esse que você está)",
     repoLink: "https://github.com/rafaelffz/portfolio",
     liveLink: "https://rafaelffz.vercel.app",
     stacks: ["front-end"],

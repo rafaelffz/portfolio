@@ -1,34 +1,43 @@
 <template>
-  <div data-scroll-container class="w-full h-full flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth">
-    <div id="presentation" class="pt-[15%] h-[calc(100vh-56px)] presentation interactive">
-      <div
-        class="text-6xl font-Lora leading-tight tracking-tight"
-        v-motion
-        :initial="{ opacity: 0, y: 150 }"
-        :visibleOnce="{ opacity: 1, y: 0 }"
-        :duration="1000"
-        :delay="2000"
-      >
-        Olá! Eu sou <span class="font-normal">Rafael,</span>
-      </div>
-      <div
-        class="text-6xl font-Lora leading-tight tracking-tight"
-        v-motion
-        :initial="{ opacity: 0, y: 150 }"
-        :visibleOnce="{ opacity: 1, y: 0 }"
-        :duration="1000"
-        :delay="2000"
-      >
-        <span>desenvolvedor front-end.</span>
+  <div
+    data-scroll-container
+    class="w-full h-full flex flex-col items-center justify-center text-center overflow-hidden !scroll-smooth"
+  >
+    <div id="hero" class="h-[calc(100vh-56px)] flex flex-col justify-center hero interactive w-full px-5">
+      <NuxtParticles id="tsparticles" :options="options" @load="onLoad"></NuxtParticles>
+
+      <div class="flex flex-col justify-center h-full mt-[56px]">
+        <div>
+          <div
+            class="text-4xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
+            v-motion
+            :initial="{ opacity: 0, y: 150 }"
+            :visibleOnce="{ opacity: 1, y: 0 }"
+            :duration="1000"
+            :delay="2000"
+          >
+            Olá! Eu sou <span class="font-normal">Rafael,</span>
+          </div>
+          <div
+            class="text-4xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
+            v-motion
+            :initial="{ opacity: 0, y: 150 }"
+            :visibleOnce="{ opacity: 1, y: 0 }"
+            :duration="1000"
+            :delay="2000"
+          >
+            <span>desenvolvedor front-end.</span>
+          </div>
+        </div>
       </div>
 
-      <div class="mt-[25%] interactive flex flex-col items-center justify-center">
-        <span class="tet-sm font-Raleway font-medium">role para mais</span>
+      <div class="interactive flex flex-col items-center justify-center">
+        <span class="tet-sm font-Raleway font-medium z-20">role para mais</span>
         <Icon class="mt-12 floating-animation" name="bi:chevron-down" size="16" />
       </div>
     </div>
 
-    <div class="flex flex-col gap-64">
+    <div>
       <!-- SOBRE -->
       <SectionsAbout />
 
@@ -45,7 +54,42 @@
 </template>
 
 <script setup lang="ts">
+const options = {
+  fullScreen: {
+    enable: true,
+    zIndex: 0,
+  },
+  style: {
+    position: "absolute",
+    height: "100vh",
+  },
+  fpsLimit: 120,
+  background: {
+    color: {
+      value: "#F8F5F1",
+    },
+  },
+  particles: {
+    color: {
+      value: "#b1b1b1",
+    },
+    links: {
+      color: "#b1b1b1",
+      enable: true,
+    },
+    move: {
+      enable: true,
+      speed: 1
+    },
+    number: {
+      value: 40,
+    },
+  },
+};
 
+const onLoad = (container: any) => {
+  container.play();
+};
 </script>
 
 <style scoped>

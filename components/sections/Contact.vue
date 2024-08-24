@@ -1,5 +1,5 @@
 <template>
-  <div id="contact" class="w-full px-16 relative flex flex-col justify-center">
+  <div id="contact" class="w-full px-5 sm:px-16 mt-[30%] relative flex flex-col justify-center">
     <div
       class="flex border-b border-b-zinc-900 py-4"
       v-motion
@@ -10,8 +10,8 @@
       <span class="text-5xl font-Lora interactive">Fale comigo!</span>
     </div>
 
-    <div class="flex justify-between mt-16 w-full">
-      <div class="flex w-1/3 flex-col gap-5 mt-3">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:gap-48 gap-16 justify-between mt-16 md:w-full">
+      <div class="flex flex-col gap-5 mt-3 md:pr-20">
         <div
           @click="contact.link ? openContact(contact.link) : ''"
           class="cursor-pointer flex items-center border-2 border-gray-primary bg-white w-full justify-between py-3 px-4 interactive hover:shadow-lg transition-shadow"
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <div class="w-2/4">
+      <div>
         <form>
           <div class="flex flex-col gap-5 font-bold font-Sans">
             <div class="flex flex-col items-start text-base">

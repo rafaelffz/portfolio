@@ -1,5 +1,5 @@
 <template>
-  <div id="skills" class="w-full px-16 relative flex flex-col items-center justify-center">
+  <div id="skills" class="w-full px-5 sm:px-16 mt-[30%] relative flex flex-col items-center justify-center">
     <div
       class="flex w-full items-center justify-center border-b border-b-zinc-900 py-4 mb-4"
       v-motion
@@ -10,9 +10,9 @@
       <span class="text-5xl font-Lora interactive">Habilidades e Tecnologias</span>
     </div>
 
-    <div class="flex flex-wrap pb-24 items-center justify-center gap-5 mt-8 uppercase w-1/2">
+    <div class="flex flex-wrap items-center justify-center gap-5 mt-8 uppercase w-full md:w-3/4 lg:w-1/2"> 
       <div
-        class="skill-item flex py-3 px-6 bg-[#c5c3c0] rounded-md z-10 cursor-default interactive"
+        class="skill-item flex items-center justify-center py-3 px-6 bg-[#c5c3c0] rounded-md z-10 cursor-default interactive"
         v-for="skill in skills"
         v-motion
         :initial="{ opacity: 0, y: 100 }"
