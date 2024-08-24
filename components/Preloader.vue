@@ -1,6 +1,6 @@
 <template>
   <div class="preloader fixed inset-0 z-50 flex items-center justify-center bg-black text-white">
-    <div class="console w-1/3 h-48 bg-zinc-900 rounded-lg py-3 px-4">
+    <div class="console w-full mx-10 md:mx-0 md:w-1/3 h-40 bg-zinc-900 rounded-lg py-3 px-4">
       <div class="top flex items-center justify-between">
         <div class="flex gap-1.5">
           <div class="w-3 h-3 bg-red-600 rounded-full"></div>

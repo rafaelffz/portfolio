@@ -1,6 +1,12 @@
 <template>
   <Preloader />
+
+  <Transition name="slide-in">
+    <HeaderMenu v-if="menu" :scroll="scroll" @close="menu = false" />
+  </Transition>
+
   <div class="h-full w-full bg-[#F8F5F1] overflow-hidden" id="scroll-container" data-scroll-container>
+
     <div
       id="scroll-indicator"
       class="fixed top-0 left-0 h-1 bg-neutral-600 z-30"
@@ -32,6 +38,10 @@
           {{ menu.name }}
         </div>
       </div>
+
+      <div class="flex sm:hidden">
+        <Icon class="cursor-pointer" @click="menu = !menu" name="material-symbols:menu" size="32" />
+      </div>
     </header>
 
     <slot />
@@ -61,6 +71,8 @@ interface Menu {
   name: string;
   link: string;
 }
+
+const menu = ref<boolean>(false);
 
 const menus = ref<Menu[]>([
   { name: "sobre", link: "#about" },
@@ -95,3 +107,22 @@ onMounted(() => {
   });
 });
 </script>
+
+<style scoped>
+.slide-in-enter-active,
+.slide-in-leave-active {
+  transition: transform 0.5s ease;
+}
+
+.slide-in-enter-from {
+  transform: translateX(100%);
+}
+
+.slide-in-leave-from {
+  transform: translateX(0%);
+}
+
+.slide-in-leave-to {
+  transform: translateX(100%);
+}
+</style>
