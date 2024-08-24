@@ -54,6 +54,8 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 
 interface Menu {
   name: string;
@@ -68,8 +70,6 @@ const menus = ref<Menu[]>([
 ]);
 
 gsap.registerPlugin(ScrollTrigger);
-import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/dist/locomotive-scroll.css";
 
 let scroll: any;
 let scrollPaddingTop: number = 56;
