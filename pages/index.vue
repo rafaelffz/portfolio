@@ -26,12 +26,13 @@
             :duration="1000"
             :delay="2000"
           >
-            <span>desenvolvedor front-end.</span>
+            <span class="hidden sm:block">desenvolvedor front-end</span>
+            <span class="block sm:hidden">desenvolvedor</span> <span class="block sm:hidden">front-end</span>
           </div>
         </div>
       </div>
 
-      <div class="interactive flex flex-col items-center justify-center">
+      <div class="interactive h-1/2 flex flex-col items-center justify-center">
         <span class="tet-sm font-Raleway font-medium z-20">role para mais</span>
         <Icon class="mt-12 floating-animation" name="bi:chevron-down" size="16" />
       </div>
@@ -79,7 +80,7 @@ const options = {
     },
     move: {
       enable: true,
-      speed: 1
+      speed: 1,
     },
     number: {
       value: 40,

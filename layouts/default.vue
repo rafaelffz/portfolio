@@ -10,13 +10,13 @@
     ></div>
 
     <header
-      class="fixed w-full h-14 flex justify-between px-10 sm:px-16 pt-4 z-30 bg-[#F8F5F1]"
+      class="fixed w-full h-14 flex justify-between px-5 sm:px-16 pt-4 z-30 bg-[#F8F5F1]"
       data-scroll
       data-scroll-sticky
       data-scroll-target="#scroll-container"
     >
       <div
-        class="font-Raleway text-xl font-semibold tracking-wide flex-1 cursor-pointer"
+        class="font-Raleway text-xl font-semibold tracking-wide flex-1 cursor-pointer select-none"
         @click="scroll.scrollTo('#hero')"
       >
         <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span>
@@ -24,7 +24,7 @@
 
       <div class="hidden sm:flex gap-6 capitalize font-Raleway text-base font-medium text-black">
         <div
-          class="interactive cursor-pointer transition-all"
+          class="interactive cursor-pointer transition-all select-none"
           v-for="(menu, index) in menus"
           :key="index"
           @click="scrollToSection(menu.link)"
