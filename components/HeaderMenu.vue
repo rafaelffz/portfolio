@@ -1,11 +1,11 @@
 <template>
   <div class="sm:hidden fixed top-0 left-0 w-full h-screen bg-black z-40 flex flex-col p-5">
-    <div class="flex justify-end">
-      <Icon class="text-white cursor-pointer" name="material-symbols:close" size="32" @click="closeMenu" />
-    </div>
+    <div class="flex flex-col w-full h-full justify-center relative">
+      <div class="absolute top-0 right-0">
+        <Icon class="text-white cursor-pointer" name="material-symbols:close" size="32" @click="closeMenu" />
+      </div>
 
-    <div class="flex items-center justify-center w-full h-full">
-      <div class="flex flex-col items-center gap-10">
+      <div class="flex flex-col justify-center items-center gap-10 h-full">
         <div
           class="text-neutral-200 tracking-wide w-max relative uppercase text-center font-Sans text-4xl cursor-pointer font-medium after:content-[''] after:absolute after:left-0 after:w-full after:scale-x-0 after:-bottom-0.5 after:h-[1px] after:bg-neutral-200 hover:after:scale-x-100 after:transition-all after:duration-300"
           v-for="(menu, index) in menus"
