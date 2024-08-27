@@ -1,7 +1,7 @@
 <template>
-  <div class="sm:hidden fixed top-0 left-0 w-full h-screen bg-black z-40 flex flex-col p-5">
+  <div class="sm:hidden fixed top-0 left-0 w-full h-screen bg-black z-40 flex flex-col p-5 pt-0">
     <div class="flex flex-col w-full h-full justify-center relative">
-      <div class="absolute top-0 right-0">
+      <div class="absolute top-5 right-0">
         <Icon class="text-white cursor-pointer" name="material-symbols:close" size="32" @click="closeMenu" />
       </div>
 

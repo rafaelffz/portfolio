@@ -1,5 +1,5 @@
 <template>
-  <div id="about" class="w-screen px-5 mt-[30%] sm:px-16 relative flex flex-col justify-center">
+  <div id="about" class="scrollto w-screen px-5 mt-[30%] sm:px-16 relative flex flex-col justify-center">
     <div
       class="flex border-b border-b-zinc-900 w-full py-4"
       v-motion
@@ -57,14 +57,13 @@
         :duration="600"
         :delay="100"
       >
-        <div
-          class="flex flex-col md:flex-row justify-between md:items-center"
-          v-for="experience in experiences"
-        >
+        <div class="flex flex-col md:flex-row justify-between md:items-center" v-for="experience in experiences">
           <div class="flex flex-col items-start gap-2">
             <div class="font-Sans font-medium text-3xl">{{ experience.company }}</div>
 
-            <div class="font-Sans font-medium text-sm sm:hidden">{{ experience.location }} ({{ experience.modality }})</div>
+            <div class="font-Sans font-medium text-sm sm:hidden">
+              {{ experience.location }} ({{ experience.modality }})
+            </div>
 
             <div class="capitalize border border-gray-primary px-2 py-1.5 rounded-lg text-xs font-Sans font-bold w-max">
               {{ experience.position }}
@@ -72,14 +71,12 @@
 
             <div class="uppercase font-bold font-Sans text-gray-primary sm:hidden">{{ experience.period }}</div>
 
-            <div class="mb-1 -ml-1">
-              <div
-                class="flex font-Sans items-center justify-start font-medium text-wrap text-start"
-                v-for="about in experience.about"
-              >
-                <Icon name="ph:dot-outline-fill" size="16" />
-                {{ about }}
-              </div>
+            <div class="mb-1 -ml-1 flex flex-col">
+              <ul class="list-disc list-inside font-Sans font-medium text-start">
+                <li v-for="about in experience.about">
+                  {{ about }}
+                </li>
+              </ul>
             </div>
 
             <div class="flex flex-wrap gap-2 items-center">

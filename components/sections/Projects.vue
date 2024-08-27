@@ -1,5 +1,5 @@
 <template>
-  <div id="projects" class="w-full mt-[30%] px-5 sm:px-16 relative flex flex-col justify-center">
+  <div id="projects" class="scrollto w-full mt-[30%] px-5 sm:px-16 relative flex flex-col justify-center">
     <div
       class="flex border-b border-b-zinc-900 py-4"
       v-motion

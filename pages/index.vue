@@ -6,10 +6,10 @@
     <div id="hero" class="h-[calc(100vh-56px)] flex flex-col justify-center hero interactive w-full px-5">
       <NuxtParticles id="tsparticles" :options="options" @load="onLoad"></NuxtParticles>
 
-      <div class="flex flex-col justify-center h-full mt-[56px]">
+      <div class="flex flex-col justify-center h-full mt-[56px] pt-12">
         <div>
           <div
-            class="text-4xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
+            class="text-5xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
             v-motion
             :initial="{ opacity: 0, y: 150 }"
             :visibleOnce="{ opacity: 1, y: 0 }"
@@ -19,7 +19,7 @@
             Olá! Eu sou <span class="font-normal">Rafael,</span>
           </div>
           <div
-            class="text-4xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
+            class="text-5xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
             v-motion
             :initial="{ opacity: 0, y: 150 }"
             :visibleOnce="{ opacity: 1, y: 0 }"

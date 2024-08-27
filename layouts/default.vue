@@ -6,7 +6,6 @@
   </Transition>
 
   <div class="h-full w-full bg-[#F8F5F1] overflow-hidden" id="scroll-container" data-scroll-container>
-
     <div
       id="scroll-indicator"
       class="fixed top-0 left-0 h-1 bg-neutral-600 z-30"
@@ -22,22 +21,29 @@
       data-scroll-target="#scroll-container"
     >
       <div
-        class="font-Raleway text-xl font-semibold tracking-wide flex-1 cursor-pointer select-none"
+        class="font-Raleway text-xl font-semibold tracking-wide flex-1 select-none"
         @click="scroll.scrollTo('#hero')"
       >
-        <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span>
-      </div>
-
-      <div class="hidden sm:flex gap-6 capitalize font-Raleway text-base font-medium text-black">
-        <div
-          class="interactive cursor-pointer transition-all select-none"
-          v-for="(menu, index) in menus"
-          :key="index"
-          @click="scrollToSection(menu.link)"
-        >
-          {{ menu.name }}
+        <div class="cursor-pointer w-max">
+          <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span>
         </div>
       </div>
+
+      <nav id="navbar" class="hidden sm:flex gap-6 capitalize font-Raleway text-base font-medium text-black">
+        <ul>
+          <li class="hidden sm:flex gap-6 capitalize font-Raleway text-base text-black">
+            <a
+              class="scrollto interactive cursor-pointer transition-all select-none duration-200"
+              v-for="(menu, index) in menus"
+              :key="index"
+              :href="menu.link"
+              @click.prevent="scrollToSection(menu.link)"
+            >
+              {{ menu.name }}
+            </a>
+          </li>
+        </ul>
+      </nav>
 
       <div class="flex sm:hidden">
         <Icon class="cursor-pointer" @click="menu = !menu" name="material-symbols:menu" size="32" />
@@ -94,7 +100,26 @@ const scrollToSection = (selector: string) => {
   }
 };
 
+let navbarLinks = ref<NodeListOf<HTMLAnchorElement>>();
+
+const navbarLinksActive = (position: number) => {
+  navbarLinks.value = document.querySelectorAll("#navbar .scrollto");
+
+  navbarLinks.value.forEach((menu: any) => {
+    let section = document.querySelector(menu.hash);
+    if (!section) return;
+    if (position >= section.offsetTop && position <= section.offsetTop + section.offsetHeight) {
+      menu.classList.add("font-semibold");
+    } else {
+      menu.classList.remove("font-semibold");
+    }
+  });
+};
+
 onMounted(() => {
+  let position = window.scrollY + 200;
+  navbarLinksActive(position);
+
   scroll = new LocomotiveScroll({
     el: document.querySelector("[data-scroll-container]") as HTMLElement,
     smooth: true,
@@ -102,6 +127,10 @@ onMounted(() => {
   });
 
   scroll.on("scroll", (args: any) => {
+    const position = args.scroll.y + 200;
+
+    navbarLinksActive(position);
+
     const progress = args.scroll.y / args.limit.y;
     gsap.to("#scroll-indicator", { width: `${progress * 100}%`, duration: 0.25 });
   });

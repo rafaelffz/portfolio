@@ -1,5 +1,5 @@
 <template>
-  <div id="skills" class="w-full px-5 sm:px-16 mt-[30%] relative flex flex-col items-center justify-center">
+  <div id="skills" class="scrollto w-full px-5 sm:px-16 mt-[30%] relative flex flex-col items-center justify-center">
     <div
       class="flex w-full items-center justify-center border-b border-b-zinc-900 py-4 mb-4"
       v-motion
@@ -10,9 +10,9 @@
       <span class="text-5xl font-Lora interactive">Habilidades e Tecnologias</span>
     </div>
 
-    <div class="flex flex-wrap items-center justify-center gap-5 mt-8 uppercase w-full md:w-3/4 lg:w-1/2"> 
+    <div class="flex flex-wrap items-center justify-center gap-5 mt-8 uppercase w-full md:w-3/4 lg:w-1/2">
       <div
-        class="skill-item flex items-center justify-center py-3 px-6 bg-[#c5c3c0] rounded-md z-10 cursor-default interactive"
+        class="skill-item transition-colors duration-200 overflow-hidden relative flex items-center justify-center py-3 px-6 bg-[#c5c3c0] rounded-md z-10 cursor-default interactive hover:text-white before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[#313131] before:transition-transform before:-translate-x-[105%] before:duration-200 before:ease-in-out before:hover:translate-x-0"
         v-for="skill in skills"
         v-motion
         :initial="{ opacity: 0, y: 100 }"
@@ -41,31 +41,3 @@ const skills = ref<string[]>([
   "node",
 ]);
 </script>
-
-<style scoped>
-.skill-item {
-  position: relative;
-  overflow: hidden;
-  transition: color 0.2s;
-}
-
-.skill-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #313131;
-  transform: translateX(-105%);
-  transition: transform 0.2s;
-}
-
-.skill-item:hover::before {
-  transform: translateX(0);
-}
-
-.skill-item:hover {
-  color: white;
-}
-</style>
