@@ -7,7 +7,7 @@
       :visible="{ opacity: 1, x: 0 }"
       :duration="600"
     >
-      <span class="text-5xl font-Lora interactive">Fale comigo!</span>
+      <span class="text-4xl sm:text-5xl font-Lora interactive">Fale comigo!</span>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:gap-48 gap-16 justify-between mt-16 md:w-full">
@@ -191,7 +191,7 @@ const validateForm = async () => {
     setTimeout(() => {
       submitted.value = false;
       loading.value = false;
-    }, 750);
+    }, 2000);
   } catch (error) {
     if (error instanceof z.ZodError) {
       const fieldErrors = {

@@ -1,5 +1,5 @@
 <template>
-  <div id="about" class="scrollto w-screen px-5 mt-[30%] sm:px-16 relative flex flex-col justify-center">
+  <div id="about" class="scrollto w-full px-5 mt-[30%] sm:px-16 flex flex-col justify-center overflow-hidden">
     <div
       class="flex border-b border-b-zinc-900 w-full py-4"
       v-motion
@@ -7,12 +7,12 @@
       :visible="{ opacity: 1, x: 0 }"
       :duration="800"
     >
-      <span class="text-5xl font-Lora interactive font-medium">Sobre mim</span>
+      <span class="text-4xl sm:text-5xl font-Lora interactive font-medium">Sobre mim</span>
     </div>
 
-    <div class="flex justify-between w-full sm:w-full text-left mt-8">
+    <div class="flex justify-between w-full relative text-left mt-8">
       <div
-        class="w-full md:w-1/2 font-Raleway font-normal text-base sm:text-xl leading-normal interactive"
+        class="md:w-1/2 font-Raleway font-normal text-base sm:text-xl leading-normal interactive"
         v-motion
         :initial="{ opacity: 0 }"
         :visible="{ opacity: 1 }"
@@ -28,13 +28,13 @@
       </div>
 
       <div
-        class="interactive -mt-10 hidden md:block"
+        class="md:absolute md:block hidden right-0 interactive"
         v-motion
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
         :duration="1000"
       >
-        <img src="../../assets/images/boy-holding-laptop.png" />
+        <img src="../../assets/images/boy-holding-laptop.png" class="w-full" />
       </div>
     </div>
 
@@ -46,7 +46,7 @@
         :visible="{ opacity: 1, x: 0 }"
         :duration="800"
       >
-        <span class="text-5xl font-Lora interactive font-medium">Experiência profissional</span>
+        <span class="text-4xl sm:text-5xl font-Lora interactive font-medium">Experiência profissional</span>
       </div>
 
       <div

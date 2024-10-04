@@ -5,62 +5,67 @@
     <HeaderMenu v-if="menu" :scroll="scroll" @close="menu = false" />
   </Transition>
 
-  <div class="h-full w-full bg-[#F8F5F1] overflow-hidden" id="scroll-container" data-scroll-container>
-    <div
-      id="scroll-indicator"
-      class="fixed top-0 left-0 h-1 bg-neutral-600 z-30"
-      data-scroll
-      data-scroll-sticky
-      data-scroll-target="#scroll-container"
-    ></div>
-
+  <div
+    class="w-full min-h-screen flex flex-col bg-[#F8F5F1] overflow-hidden"
+    id="scroll-container"
+    data-scroll-container
+  >
     <header
-      class="fixed w-full h-14 flex justify-between px-5 sm:px-16 pt-4 z-30 bg-[#F8F5F1]"
+      class="w-full h-14 z-30 bg-[#F8F5F1]"
       data-scroll
       data-scroll-sticky
       data-scroll-target="#scroll-container"
     >
-      <div
-        class="font-Raleway text-xl font-semibold tracking-wide flex-1 select-none"
-        @click="scroll.scrollTo('#hero')"
-      >
-        <div class="cursor-pointer w-max">
-          <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span>
+      <div id="scroll-indicator" class="h-1 bg-neutral-600 z-30"></div>
+
+      <div class="header-content flex items-center h-full w-full px-5 sm:px-16">
+        <div
+          class="font-Raleway text-xl font-semibold tracking-wide flex-1 select-none"
+          @click="scroll.scrollTo('#hero')"
+        >
+          <div class="cursor-pointer w-max">
+            <span class="text-blue-800">&lt;&#47;</span><span>rafaelffz</span><span class="text-blue-800">&gt;</span>
+          </div>
         </div>
-      </div>
 
-      <nav id="navbar" class="hidden sm:flex gap-6 capitalize font-Raleway text-base font-medium text-black">
-        <ul>
-          <li class="hidden sm:flex gap-6 capitalize font-Raleway text-base text-black">
-            <a
-              class="scrollto interactive cursor-pointer transition-all select-none duration-200"
-              v-for="(menu, index) in menus"
-              :key="index"
-              :href="menu.link"
-              @click.prevent="scrollToSection(menu.link)"
-            >
-              {{ menu.name }}
-            </a>
-          </li>
-        </ul>
-      </nav>
+        <nav id="navbar" class="hidden sm:flex gap-6 capitalize font-Raleway text-base font-medium text-black">
+          <ul>
+            <li class="hidden sm:flex gap-6 capitalize font-Raleway text-base text-black">
+              <a
+                class="scrollto interactive cursor-pointer transition-all select-none duration-200"
+                v-for="(menu, index) in menus"
+                :key="index"
+                :href="menu.link"
+                @click.prevent="scrollToSection(menu.link)"
+              >
+                {{ menu.name }}
+              </a>
+            </li>
+          </ul>
+        </nav>
 
-      <div class="flex sm:hidden">
-        <Icon class="cursor-pointer" @click="menu = !menu" name="material-symbols:menu" size="32" />
+        <div class="flex sm:hidden">
+          <Icon class="cursor-pointer" @click="menu = !menu" name="material-symbols:menu" size="32" />
+        </div>
       </div>
     </header>
 
-    <slot />
+    <div class="flex-1 w-full bg-[#F8F5F1] overflow-hidden">
+      <slot />
+    </div>
 
-    <footer class="pb-4 px-5 sm:px-16 mt-36">
-      <div class="flex items-end text-base justify-between font-Raleway my-6 font-medium tracking-wide">
-        <span class="font-normal text-xs sm:text-sm">
-          Imagens por <a class="font-medium" href="https://icons8.com" target="_blank">Icons8</a>
-        </span>
+    <footer class="px-5 sm:px-16 mt-20">
+      <div class="flex flex-col gap-2 sm:gap-0 sm:flex-row text-base items-center sm:items-end sm:justify-between font-Raleway my-4 font-medium tracking-wide">
+        <div class="flex flex-col items-center sm:items-start gap-2 sm:gap-0">
+          <span class="font-normal text-sm">
+            Imagens por <a class="font-medium" href="https://icons8.com" target="_blank">Icons8</a>
+          </span>
 
-        <div class="flex flex-col items-end text-xs sm:text-base">
-          <span>Desenvolvido por Rafael</span>
-          <span class="font-normal text-xs sm:text-sm">copyright &copy; 2024</span>
+          <span class="text-base font-medium hidden sm:block">Desenvolvido por Rafael</span>
+        </div>
+
+        <div class="flex items-end">
+          <span class="font-normal text-sm">rafaelffz &copy; 2024</span>
         </div>
       </div>
     </footer>
@@ -69,7 +74,6 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
@@ -77,7 +81,6 @@ interface Menu {
   name: string;
   link: string;
 }
-
 const menu = ref<boolean>(false);
 
 const menus = ref<Menu[]>([
@@ -86,8 +89,6 @@ const menus = ref<Menu[]>([
   { name: "projetos", link: "#projects" },
   { name: "contato", link: "#contact" },
 ]);
-
-gsap.registerPlugin(ScrollTrigger);
 
 let scroll: any;
 let scrollPaddingTop: number = 56;
@@ -125,6 +126,9 @@ onMounted(() => {
     smooth: true,
     multiplier: 0.8,
   });
+
+  const initialProgress = window.scrollY / document.body.scrollHeight;
+  gsap.to("#scroll-indicator", { width: `${initialProgress * 100}%`, duration: 0.25 });
 
   scroll.on("scroll", (args: any) => {
     const position = args.scroll.y + 200;

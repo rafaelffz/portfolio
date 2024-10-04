@@ -7,7 +7,7 @@
       :visible="{ opacity: 1, y: 0 }"
       :duration="600"
     >
-      <span class="text-5xl font-Lora interactive">Habilidades e Tecnologias</span>
+      <span class="text-4xl sm:text-5xl font-Lora interactive">Habilidades e Tecnologias</span>
     </div>
 
     <div class="flex flex-wrap items-center justify-center gap-5 mt-8 uppercase w-full md:w-3/4 lg:w-1/2">
@@ -34,10 +34,17 @@ const skills = ref<string[]>([
   "git",
   "github",
   "vue",
+  "pinia",
   "vuetify",
   "nuxt",
   "typescript",
   "tailwindcss",
   "node",
+  "fastify",
+  "react",
+  "prisma",
+  "zod",
+  "vercel",
+  "jwt",
 ]);
 </script>
