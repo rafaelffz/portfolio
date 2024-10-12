@@ -19,7 +19,7 @@
         :duration="800"
         :delay="250"
       >
-        Meu nome é Rafael, tenho 17 anos e atualmente sou um desenvolvedor front-end cursando o 3º ano do ensino médio.
+        Meu nome é Rafael, tenho 18 anos e atualmente sou um desenvolvedor front-end cursando o 3º ano do ensino médio.
         Gosto de aprender novas coisas porque dessa forma consigo sempre melhorar para resolver novos problemas,
         enfrentar novas situações e aumentar meu conhecimento. <br />
         Apaixonado por tecnologia, estou sempre buscando me aperfeiçoar e aprender novas ferramentas para expandir meu

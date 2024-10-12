@@ -107,7 +107,11 @@ const projects = ref<Project[]>([
     repoLink: "https://github.com/rafaelffz/gam3r.store",
     stacks: ["front-end"],
   },
+  {
+    title: "Extreme Week 2",
+    repoLink: "https://github.com/rafaelffz/extreme-week2",
+    liveLink: "https://rafaelffz-extweek2.vercel.app/",
+    stacks: ["front-end", "back-end"],
+  },
 ]);
 </script>
-
-<style scoped></style>

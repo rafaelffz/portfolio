@@ -11,9 +11,9 @@
     data-scroll-container
   >
     <header
-      class="w-full h-14 z-30 bg-[#F8F5F1]"
+      :class="['w-full h-14 z-30 bg-[#F8F5F1]', isMobile ? 'fixed top-0 left-0 right-0' : '']"
       data-scroll
-      data-scroll-sticky
+      :data-scroll-sticky="!isMobile"
       data-scroll-target="#scroll-container"
     >
       <div id="scroll-indicator" class="h-1 bg-neutral-600 z-30"></div>
@@ -54,18 +54,20 @@
       <slot />
     </div>
 
-    <footer class="px-5 sm:px-16 mt-20">
-      <div class="flex flex-col gap-2 sm:gap-0 sm:flex-row text-base items-center sm:items-end sm:justify-between font-Raleway my-4 font-medium tracking-wide">
-        <div class="flex flex-col items-center sm:items-start gap-2 sm:gap-0">
+    <footer class="px-5 sm:px-16 mt-28">
+      <div
+        class="flex flex-col gap-2 sm:gap-0 sm:flex-row text-base items-center sm:items-end sm:justify-between font-Raleway my-4 font-medium tracking-wide"
+      >
+        <div class="flex-col items-center sm:items-start gap-2 sm:gap-0 hidden sm:flex">
           <span class="font-normal text-sm">
             Imagens por <a class="font-medium" href="https://icons8.com" target="_blank">Icons8</a>
           </span>
 
-          <span class="text-base font-medium hidden sm:block">Desenvolvido por Rafael</span>
+          <span class="text-base font-medium">Desenvolvido por Rafael</span>
         </div>
 
         <div class="flex items-end">
-          <span class="font-normal text-sm">rafaelffz &copy; 2024</span>
+          <span class="font-normal text-base">rafaelffz &copy; 2024</span>
         </div>
       </div>
     </footer>
@@ -76,11 +78,13 @@
 import gsap from "gsap";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
 interface Menu {
   name: string;
   link: string;
 }
+
 const menu = ref<boolean>(false);
 
 const menus = ref<Menu[]>([
@@ -89,6 +93,9 @@ const menus = ref<Menu[]>([
   { name: "projetos", link: "#projects" },
   { name: "contato", link: "#contact" },
 ]);
+
+const { isSmallerOrEqual } = useBreakpoints(breakpointsTailwind);
+const isMobile = isSmallerOrEqual('sm');
 
 let scroll: any;
 let scrollPaddingTop: number = 56;

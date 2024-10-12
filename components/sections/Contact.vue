@@ -121,11 +121,6 @@ interface Contact {
 
 const contacts = ref<Contact[]>([
   {
-    icon: "mdi:instagram",
-    link: "https://instagram.com/ffzrafaa_",
-    title: "Instagram",
-  },
-  {
     icon: "ph:github-logo-bold",
     link: "https://github.com/rafaelffz",
     title: "GitHub",
@@ -134,6 +129,11 @@ const contacts = ref<Contact[]>([
     icon: "mdi:linkedin",
     link: "https://www.linkedin.com/in/rafaelffz/",
     title: "LinkedIn",
+  },
+  {
+    icon: "ri:twitter-x-line",
+    link: "https://www.linkedin.com/in/rafaelffz/",
+    title: "X | Twitter",
   },
 ]);
 
