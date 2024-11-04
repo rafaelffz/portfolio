@@ -78,7 +78,7 @@
 import gsap from "gsap";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
+import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
 interface Menu {
   name: string;
@@ -95,7 +95,7 @@ const menus = ref<Menu[]>([
 ]);
 
 const { isSmallerOrEqual } = useBreakpoints(breakpointsTailwind);
-const isMobile = isSmallerOrEqual('sm');
+const isMobile = isSmallerOrEqual("sm");
 
 let scroll: any;
 let scrollPaddingTop: number = 56;
@@ -143,7 +143,10 @@ onMounted(() => {
     navbarLinksActive(position);
 
     const progress = args.scroll.y / args.limit.y;
-    gsap.to("#scroll-indicator", { width: `${progress * 100}%`, duration: 0.25 });
+    const adjustedProgress = isMobile ? progress * 100 * 1.2154 : progress * 100;
+
+    gsap.to("#scroll-indicator", { width: `${adjustedProgress}%`, duration: 0.25 });
+    console.log(adjustedProgress);
   });
 });
 </script>

@@ -129,12 +129,7 @@ const contacts = ref<Contact[]>([
     icon: "mdi:linkedin",
     link: "https://www.linkedin.com/in/rafaelffz/",
     title: "LinkedIn",
-  },
-  {
-    icon: "ri:twitter-x-line",
-    link: "https://www.linkedin.com/in/rafaelffz/",
-    title: "X | Twitter",
-  },
+  }
 ]);
 
 function openContact(link: string) {
