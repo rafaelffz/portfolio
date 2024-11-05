@@ -146,7 +146,6 @@ onMounted(() => {
     const adjustedProgress = isMobile ? progress * 100 * 1.2154 : progress * 100;
 
     gsap.to("#scroll-indicator", { width: `${adjustedProgress}%`, duration: 0.25 });
-    console.log(adjustedProgress);
   });
 });
 </script>
