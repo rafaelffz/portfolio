@@ -124,8 +124,8 @@
               </div>
 
               <div class="w-full flex align-center justify-between pr-3 sm:hidden">
-                <div class="uppercase font-bold font-Sans text-gray-primary">{{ experience.period }}</div>
-                <div class="font-Sans font-medium text-sm">{{ experience.location }} ({{ experience.modality }})</div>
+                <div class="uppercase font-bold font-Sans text-gray-primary">{{ previous.period }}</div>
+                <div class="font-Sans font-medium text-sm">{{ previous.location }} ({{ previous.modality }})</div>
               </div>
 
               <div class="mb-1 flex flex-col">
