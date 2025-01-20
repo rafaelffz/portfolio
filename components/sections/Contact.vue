@@ -1,20 +1,22 @@
 <template>
   <div id="contact" class="scrollto w-full px-5 sm:px-16 mt-[30%] relative flex flex-col justify-center">
-    <MotionWrapper
+    <div
       class="flex border-b border-b-zinc-900 py-4"
+      v-motion
       :initial="{ opacity: 0, x: -100 }"
       :visible="{ opacity: 1, x: 0 }"
       :duration="600"
     >
       <span class="text-4xl sm:text-5xl font-Lora interactive">Fale comigo!</span>
-    </MotionWrapper>
+    </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:gap-48 gap-16 justify-between mt-16 md:w-full">
       <div class="flex flex-col gap-5 mt-3 md:pr-20">
-        <MotionWrapper
+        <div
           @click="contact.link ? openContact(contact.link) : ''"
           class="cursor-pointer flex items-center border-2 border-gray-primary bg-white w-full justify-between py-3 px-4 interactive hover:shadow-lg transition-shadow"
           v-for="contact in contacts"
+          v-motion
           :initial="{ opacity: 0, x: -100 }"
           :visible="{ opacity: 1, x: 0 }"
           :hovered="{ x: 10 }"
@@ -29,7 +31,7 @@
           <div>
             <Icon name="tabler:external-link" size="26" />
           </div>
-        </MotionWrapper>
+        </div>
       </div>
 
       <div>

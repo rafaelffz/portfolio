@@ -5,24 +5,24 @@
 
       <div class="flex flex-col justify-center items-center text-center h-full mt-[56px] pt-12">
         <div>
-          <MotionWrapper
+          <div
             class="text-4xl sm:text-5xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
-            :initial="{ opacity: 0, y: 150 }"
-            :visibleOnce="{ opacity: 1, y: 0 }"
+            v-motion
+            :initial="{ opacity: 0, x: 150 }"
+            :visibleOnce="{ opacity: 1, x: 0 }"
             :duration="1000"
-            :delay="2000"
           >
             Olá! Eu sou o Rafael,
-          </MotionWrapper>
-          <MotionWrapper
+          </div>
+          <div
             class="text-4xl sm:text-5xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
+            v-motion
             :initial="{ opacity: 0, y: 150 }"
             :visibleOnce="{ opacity: 1, y: 0 }"
             :duration="1000"
-            :delay="2100"
           >
             <span>desenvolvedor front-end</span>
-          </MotionWrapper>
+          </div>
         </div>
       </div>
 

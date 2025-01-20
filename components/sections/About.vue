@@ -1,17 +1,19 @@
 <template>
   <div id="about" class="scrollto w-full px-5 mt-[30%] sm:px-16 flex flex-col justify-center overflow-hidden">
-    <MotionWrapper
+    <div
       class="flex border-b border-b-zinc-900 w-full py-4"
+      v-motion
       :initial="{ opacity: 0, x: -100 }"
       :visible="{ opacity: 1, x: 0 }"
       :duration="800"
     >
       <span class="text-4xl sm:text-5xl font-Lora interactive font-medium">Sobre mim</span>
-    </MotionWrapper>
+    </div>
 
     <div class="flex justify-between w-full relative text-left mt-8">
-      <MotionWrapper
+      <div
         class="md:w-1/2 font-Raleway font-normal text-base sm:text-xl sm:leading-relaxed interactive"
+        v-motion
         :initial="{ opacity: 0 }"
         :visible="{ opacity: 1 }"
         :duration="800"
@@ -26,38 +28,42 @@
           questionando até onde a inovação pode nos levar para melhorar a maneira como realizamos tarefas. Acredito que
           minha curiosidade é o que me impulsiona a continuar avançando, tanto profissionalmente quanto pessoalmente.
         </p>
-      </MotionWrapper>
+      </div>
 
       <div
         class="md:absolute md:block hidden right-0 interactive"
+        v-motion
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
-        :duration="1000"
+        :duration="800"
       >
         <img src="../../assets/images/boy-holding-laptop.png" class="w-full" />
       </div>
     </div>
 
     <div class="mt-[25%] flex flex-col justify-center w-full sm:w-full sm:px-0">
-      <MotionWrapper
+      <div
         class="flex border-b border-b-zinc-900 py-4"
+        v-motion
         :initial="{ opacity: 0, x: -100 }"
         :visible="{ opacity: 1, x: 0 }"
         :duration="800"
       >
         <span class="text-4xl sm:text-5xl font-Lora interactive font-medium">Experiência profissional</span>
-      </MotionWrapper>
+      </div>
 
-      <MotionWrapper
+      <div
         class="mt-8 flex flex-col gap-12 w-full"
+        v-motion
         :initial="{ opacity: 0, y: 50 }"
         :visible="{ opacity: 1, y: 0 }"
         :duration="600"
         :delay="100"
       >
-        <MotionWrapper
+        <div
           class="flex flex-col gap-10"
           v-for="experience in experiences"
+          v-motion
           :initial="{ opacity: 0, y: 50 }"
           :visible="{ opacity: 1, y: 0 }"
           :duration="600"
@@ -109,10 +115,11 @@
             </div>
           </div>
 
-          <MotionWrapper
+          <div
             v-if="experience.previousPositions"
             v-for="previous in experience.previousPositions"
             class="flex flex-col md:flex-row justify-between md:items-center"
+            v-motion
             :initial="{ opacity: 0, y: 50 }"
             :visible="{ opacity: 1, y: 0 }"
             :duration="600"
@@ -161,25 +168,27 @@
                 </div>
               </div>
             </div>
-          </MotionWrapper>
-        </MotionWrapper>
-      </MotionWrapper>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="mt-[25%] flex flex-col justify-center w-full sm:w-full sm:px-0">
-      <MotionWrapper
+      <div
         class="flex border-b border-b-zinc-900 py-4"
+        v-motion
         :initial="{ opacity: 0, x: -100 }"
         :visible="{ opacity: 1, x: 0 }"
         :duration="800"
       >
         <span class="text-4xl sm:text-5xl font-Lora interactive font-medium">Experiência Acadêmica</span>
-      </MotionWrapper>
+      </div>
 
       <div class="flex flex-col gap-10 w-full mt-8">
-        <MotionWrapper
+        <div
           v-for="experience in academicExperiences"
           class="border border-gray-primary rounded-lg p-4"
+          v-motion
           :initial="{ opacity: 0, y: 50 }"
           :visible="{ opacity: 1, y: 0 }"
           :duration="600"
@@ -210,20 +219,21 @@
               </div>
             </div>
           </div>
-        </MotionWrapper>
+        </div>
       </div>
     </div>
 
     <div class="mt-[20%] flex items-center justify-center w-full">
       <a href="/cv-rafaelffz.pdf" download="cv-rafaelffz.pdf"
-        ><MotionWrapper
+        ><div
+          v-motion
           :initial="{ opacity: 0, x: -100 }"
           :visible="{ opacity: 1, x: 0 }"
           :duration="800"
           class="cursor-pointer border border-gray-primary relative w-max px-6 flex items-center text-base gap-2 py-2 rounded-full font-medium overflow-hidden hover:text-white before:content-[''] before:absolute before:bottom-0 before:left-0 before:right-0 before:w-full before:h-0 before:transition-all before:duration-200 before:bg-gray-primary hover:before:h-full"
         >
           <span class="relative">Baixe o meu CV</span>
-          <Icon name="material-symbols:download-rounded" size="24" /> </MotionWrapper
+          <Icon name="material-symbols:download-rounded" size="24" /></div
       ></a>
     </div>
   </div>

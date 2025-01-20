@@ -1,6 +1,5 @@
-<!-- layouts/default.vue -->
 <template>
-  <Preloader />
+  <!-- <Preloader /> -->
 
   <Transition name="slide-in">
     <HeaderMenu v-if="menu" :scroll="scroll" @close="menu = false" />
