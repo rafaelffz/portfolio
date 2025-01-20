@@ -1,3 +1,4 @@
+<!-- layouts/default.vue -->
 <template>
   <Preloader />
 
@@ -13,7 +14,7 @@
     <header
       :class="['w-full h-14 z-30 bg-[#F8F5F1]', isMobile ? 'fixed top-0 left-0 right-0' : '']"
       data-scroll
-      :data-scroll-sticky="!isMobile"
+      data-scroll-sticky
       data-scroll-target="#scroll-container"
     >
       <div id="scroll-indicator" class="h-1 bg-neutral-600 z-30"></div>
@@ -60,7 +61,8 @@
       >
         <div class="flex-col items-center sm:items-start gap-2 sm:gap-0 hidden sm:flex">
           <span class="font-normal text-sm">
-            Imagens por <a class="font-medium" href="https://icons8.com" target="_blank">Icons8</a>
+            Imagens por
+            <a class="font-medium" href="https://icons8.com" target="_blank" rel="noreferrer noopener">Icons8</a>
           </span>
 
           <span class="text-base font-medium">Desenvolvido por Rafael</span>
@@ -133,6 +135,10 @@ onMounted(() => {
     smooth: true,
     multiplier: 0.8,
   });
+
+  setTimeout(() => {
+    scroll.update();
+  }, 500);
 
   const initialProgress = window.scrollY / document.body.scrollHeight;
   gsap.to("#scroll-indicator", { width: `${initialProgress * 100}%`, duration: 0.25 });

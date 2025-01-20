@@ -1,31 +1,28 @@
 <template>
   <div class="w-full">
-    <div id="hero" class="h-[calc(100vh-56px)] flex flex-col justify-center hero interactive w-full px-5">
+    <div id="hero" class="h-[100vh] flex flex-col justify-center hero interactive w-full px-5">
       <NuxtParticles id="tsparticles" :options="options" @load="onLoad"></NuxtParticles>
 
       <div class="flex flex-col justify-center items-center text-center h-full mt-[56px] pt-12">
         <div>
-          <div
+          <MotionWrapper
             class="text-4xl sm:text-5xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
-            v-motion
             :initial="{ opacity: 0, y: 150 }"
             :visibleOnce="{ opacity: 1, y: 0 }"
             :duration="1000"
             :delay="2000"
           >
-            Olá! Eu sou <span class="font-normal">Rafael,</span>
-          </div>
-          <div
+            Olá! Eu sou o Rafael,
+          </MotionWrapper>
+          <MotionWrapper
             class="text-4xl sm:text-5xl md:text-6xl font-Lora font-normal leading-tight tracking-tight"
-            v-motion
             :initial="{ opacity: 0, y: 150 }"
             :visibleOnce="{ opacity: 1, y: 0 }"
             :duration="1000"
-            :delay="2000"
+            :delay="2100"
           >
-            <span class="hidden sm:block">desenvolvedor front-end</span>
-            <span class="block sm:hidden">desenvolvedor</span> <span class="block sm:hidden">front-end</span>
-          </div>
+            <span>desenvolvedor front-end</span>
+          </MotionWrapper>
         </div>
       </div>
 
@@ -35,18 +32,18 @@
       </div>
     </div>
 
-    <div>
+    <div class="w-full">
       <!-- SOBRE -->
-      <SectionsAbout />
+      <LazySectionsAbout />
 
       <!-- HABILIDADES -->
-      <SectionsSkills />
+      <LazySectionsSkills />
 
       <!-- PROJETOS -->
-      <SectionsProjects />
+      <LazySectionsProjects />
 
       <!-- CONTATO -->
-      <SectionsContact />
+      <LazySectionsContact />
     </div>
   </div>
 </template>

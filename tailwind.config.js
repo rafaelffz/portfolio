@@ -4,15 +4,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        "Raleway": ["Raleway", "sans-serif"],
-        "Lora": ["Lora", "serif"],
-        "Sans": ["DM Sans", "sans-serif"],
+        Raleway: ["Raleway", "sans-serif"],
+        Lora: ["Lora", "serif"],
+        Sans: ["DM Sans", "sans-serif"],
       },
       colors: {
-        'gray-primary': '#1E1E1E',
-      }
+        "gray-primary": "#1E1E1E",
+      },
     },
   },
   plugins: [],
-}
-
+};

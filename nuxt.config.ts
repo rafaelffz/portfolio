@@ -6,9 +6,16 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Rafael | Front-end Developer",
-      htmlAttrs: { lang: "pt-br" },
-      meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" }],
+      htmlAttrs: { lang: "pt-BR" },
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "format-detection", content: "telephone=no" },
+      ],
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.svg" },
+        { rel: "canonical", href: "https://rafaelffz.vercel.app" },
+      ],
     },
   },
 
