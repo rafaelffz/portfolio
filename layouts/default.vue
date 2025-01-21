@@ -1,6 +1,4 @@
 <template>
-  <!-- <Preloader /> -->
-
   <Transition name="slide-in">
     <HeaderMenu v-if="menu" :scroll="scroll" @close="menu = false" />
   </Transition>
@@ -99,12 +97,11 @@ const { isSmallerOrEqual } = useBreakpoints(breakpointsTailwind);
 const isMobile = isSmallerOrEqual("sm");
 
 let scroll: any;
-let scrollPaddingTop: number = 56;
 
 const scrollToSection = (selector: string) => {
   const targetElement = document.querySelector(selector) as HTMLElement;
   if (targetElement) {
-    const offsetTop = targetElement.offsetTop - scrollPaddingTop;
+    const offsetTop = targetElement.offsetTop - 56;
     scroll.scrollTo(offsetTop);
   }
 };

@@ -37,7 +37,7 @@
         :visibleOnce="{ opacity: 1, y: 0 }"
         :duration="800"
       >
-        <img src="../../assets/images/boy-holding-laptop.png" class="w-full" />
+        <img src="../../assets/images/boy-holding-laptop.png" alt="boy holding laptop" class="w-full" />
       </div>
     </div>
 
@@ -222,20 +222,6 @@
         </div>
       </div>
     </div>
-
-    <div class="mt-[20%] flex items-center justify-center w-full">
-      <a href="/cv-rafaelffz.pdf" download="cv-rafaelffz.pdf"
-        ><div
-          v-motion
-          :initial="{ opacity: 0, x: -100 }"
-          :visible="{ opacity: 1, x: 0 }"
-          :duration="800"
-          class="cursor-pointer border border-gray-primary relative w-max px-6 flex items-center text-base gap-2 py-2 rounded-full font-medium overflow-hidden hover:text-white before:content-[''] before:absolute before:bottom-0 before:left-0 before:right-0 before:w-full before:h-0 before:transition-all before:duration-200 before:bg-gray-primary hover:before:h-full"
-        >
-          <span class="relative">Baixe o meu CV</span>
-          <Icon name="material-symbols:download-rounded" size="24" /></div
-      ></a>
-    </div>
   </div>
 </template>
 
@@ -249,6 +235,13 @@ interface Experience {
   techs: string[];
   period: string;
   previousPositions?: Omit<Experience, "company">[];
+}
+
+interface academicExperience {
+  institution: string;
+  degree: string;
+  period: string;
+  location: string;
 }
 
 const experiences: Experience[] = [
@@ -282,7 +275,7 @@ const experiences: Experience[] = [
   },
 ];
 
-const academicExperiences: any = [
+const academicExperiences: academicExperience[] = [
   {
     institution: "Centro Universitário Católico Salesiano Auxilium - UniSALESIANO",
     degree: "Tecnologia em Análise e Desenvolvimento de Sistemas",

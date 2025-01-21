@@ -1,6 +1,8 @@
 <template>
   <div class="w-full">
-    <div id="hero" class="h-[100vh] flex flex-col justify-center hero interactive w-full px-5">
+    <StairTransition />
+
+    <div id="hero" class="h-[calc(100vh-56px)] flex flex-col justify-center hero interactive w-full px-5">
       <NuxtParticles id="tsparticles" :options="options" @load="onLoad"></NuxtParticles>
 
       <div class="flex flex-col justify-center items-center text-center h-full mt-[56px] pt-12">
@@ -10,7 +12,8 @@
             v-motion
             :initial="{ opacity: 0, x: 150 }"
             :visibleOnce="{ opacity: 1, x: 0 }"
-            :duration="1000"
+            :duration="800"
+            :delay="200"
           >
             Olá! Eu sou o Rafael,
           </div>
@@ -19,7 +22,8 @@
             v-motion
             :initial="{ opacity: 0, y: 150 }"
             :visibleOnce="{ opacity: 1, y: 0 }"
-            :duration="1000"
+            :duration="800"
+            :delay="200"
           >
             <span>desenvolvedor front-end</span>
           </div>
@@ -58,7 +62,7 @@ const options = {
     position: "absolute",
     height: "100vh",
   },
-  fpsLimit: 120,
+  fpsLimit: 40,
   background: {
     color: {
       value: "#F8F5F1",
@@ -77,7 +81,7 @@ const options = {
       speed: 1,
     },
     number: {
-      value: 40,
+      value: 20,
     },
   },
 };

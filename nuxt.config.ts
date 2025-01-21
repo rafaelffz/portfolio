@@ -11,6 +11,11 @@ export default defineNuxtConfig({
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "format-detection", content: "telephone=no" },
+        {
+          name: "description",
+          content:
+            "Olá! Eu sou o Rafael, um desenvolvedor front-end focado em criar interfaces modernas e responsivas. Conheça meu trabalho!",
+        },
       ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.svg" },
