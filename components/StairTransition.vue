@@ -24,6 +24,6 @@ const steps = Array.from({ length: 5 });
 }
 
 .animate-stair-drop {
-  animation: stairDrop 200ms ease-in forwards;
+  animation: stairDrop 250ms ease-in forwards;
 }
 </style>
