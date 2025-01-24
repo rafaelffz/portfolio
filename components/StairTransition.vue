@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute top-0 left-0 w-full h-screen z-30 flex">
+  <div class="absolute top-0 left-0 w-full h-screen z-30 flex pointer-events-none">
     <div
       v-for="(step, index) in steps"
       :key="index"
