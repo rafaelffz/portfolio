@@ -10,7 +10,7 @@
       <span class="text-4xl sm:text-5xl font-Lora interactive">Habilidades e Tecnologias</span>
     </div>
 
-    <div class="flex flex-wrap items-center justify-center gap-5 mt-8 uppercase w-full md:w-3/4 lg:w-1/2">
+    <div class="flex flex-wrap items-center justify-center gap-5 mt-8 uppercase w-full md:w-3/4 lg:w-3/5">
       <div
         class="skill-item transition-colors duration-200 overflow-hidden relative flex items-center justify-center py-3 px-6 bg-[#c5c3c0] rounded-md z-10 cursor-default interactive hover:text-white before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[#313131] before:transition-transform before:-translate-x-[105%] before:duration-200 before:ease-in-out before:hover:translate-x-0"
         v-for="skill in skills"
@@ -52,5 +52,9 @@ const skills = ref<string[]>([
   "nestjs",
   "docker",
   "docker compose",
+  "java",
+  "spring boot",
+  "spring data",
+  "jdbi",
 ]);
 </script>

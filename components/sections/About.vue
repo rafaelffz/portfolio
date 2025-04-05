@@ -20,7 +20,7 @@
         :delay="250"
       >
         <p class="">
-          Meu nome é Rafael, tenho 18 anos e atualmente sou desenvolvedor front-end na empresa
+          Meu nome é Rafael, tenho 18 anos e atualmente sou desenvolvedor web na empresa
           <span class="font-medium">CemiCloud</span>. Tenho uma grande paixão por aprender e acredito que isso é
           essencial para me tornar um profissional melhor, pois, ao adquirir novos conhecimentos, consigo resolver
           problemas mais desafiadores e enfrentar situações novas com mais confiança. <br />
@@ -31,13 +31,13 @@
       </div>
 
       <div
-        class="md:absolute md:block hidden right-0 interactive"
+        class="md:absolute md:flex items-center justify-center hidden right-0 -top-[25%] w-2/5"
         v-motion
         :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
         :duration="800"
       >
-        <img src="../../assets/images/boy-holding-laptop.png" alt="boy holding laptop" class="w-full" />
+        <img src="../../assets/images/rafaelffz-notebook.png" alt="boy holding laptop" class="w-3/4 rounded-full" />
       </div>
     </div>
 
@@ -70,8 +70,8 @@
           :delay="200"
         >
           <div class="flex flex-col md:flex-row justify-between md:items-center">
-            <div class="flex flex-col items-start gap-2">
-              <div class="font-Sans font-medium text-2xl md:text-3xl">{{ experience.company }}</div>
+            <div class="flex flex-col items-start gap-2 pl-2">
+              <div class="font-Sans font-medium text-2xl md:text-3xl -ml-2">{{ experience.company }}</div>
 
               <div class="capitalize border border-gray-primary px-2 py-1.5 rounded-lg text-xs font-Sans font-bold">
                 {{ experience.position }}
@@ -118,7 +118,7 @@
           <div
             v-if="experience.previousPositions"
             v-for="previous in experience.previousPositions"
-            class="flex flex-col md:flex-row justify-between md:items-center"
+            class="flex flex-col md:flex-row justify-between md:items-center pl-2"
             v-motion
             :initial="{ opacity: 0, y: 50 }"
             :visible="{ opacity: 1, y: 0 }"
@@ -249,14 +249,28 @@ const experiences: Experience[] = [
     company: "CemiCloud",
     location: "Bilac - BR",
     modality: "remoto",
-    position: "Desenvolvedor Front-End Jr.",
+    position: "Desenvolvedor Web Jr.",
     about: [
-      "Desenvolvimento de interfaces interativas e responsivas com Vue 3, utilizando Pinia para gerenciamento de estado e TypeScript para maior robustez e escalabilidade do código",
-      "Criação e estilização de componentes customizados e reutilizáveis com Vuetify",
-      "Integração de APIs REST para consumo de dados",
+      "Criação de interfaces interativas e responsivas com Vue 3, utilizando Pinia para gerenciamento de estado e TypeScript para maior robustez e escalabilidade do código",
+      "Criação e estilização de componentes reutilizáveis com Vuetify",
+      "Integração de APIs REST para consumo e fornecimento de dados",
+      " Desenvolvimento de APIs e serviços no back-end com Java e Spring Boot, utilizando JPA e JDBI para acesso a dados no PostgreSQL",
       "Colaboração com a equipe para corrigir bugs e implementar melhorias no código",
     ],
-    techs: ["JavaScript", "TypeScript", "VueJS", "Vuetify", "Pinia", "Axios", "Git", "GitHub"],
+    techs: [
+      "JavaScript",
+      "TypeScript",
+      "VueJS",
+      "Vuetify",
+      "Pinia",
+      "Axios",
+      "Git",
+      "GitHub",
+      "Java",
+      "Spring Boot",
+      "JPA",
+      "JDBI",
+    ],
     period: "jan 2025 ~ atual",
     previousPositions: [
       {
@@ -268,7 +282,7 @@ const experiences: Experience[] = [
           "Integração de APIs REST para consumo de dados",
           "Criação de layouts utilizando Vue 2 e Vue 3, garantindo fidelidade ao design proposto",
         ],
-        techs: ["JavaScript", "VueJS", "Vuetify", "Axios", "Git", "GitHub"],
+        techs: ["JavaScript", "VueJS", "Vuex", "Pinia", "Vuetify", "Axios", "Git", "GitHub"],
         period: "dez 2023 ~ jan 2025",
       },
     ],
@@ -291,4 +305,20 @@ const academicExperiences: academicExperience[] = [
 ];
 </script>
 
-<style scoped></style>
+<style scoped>
+.floating {
+  animation: floating 2s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+</style>

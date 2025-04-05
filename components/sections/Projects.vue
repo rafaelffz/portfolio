@@ -5,7 +5,7 @@
       v-motion
       :initial="{ opacity: 0, x: -100 }"
       :visible="{ opacity: 1, x: 0 }"
-      :duration="600"
+      :duration="800"
     >
       <span class="text-4xl sm:text-5xl font-Lora interactive">Projetos</span>
     </div>
@@ -14,11 +14,6 @@
       <div
         class="interactive flex flex-col justify-between w-full md:w-[300px] h-min-32 flex-wrap bg-white rounded-lg border border-zinc-700 shadow-md hover:shadow-2xl transition-shadow p-3"
         v-for="project in projects"
-        v-motion
-        :initial="{ opacity: 0, y: 120 }"
-        :visible="{ opacity: 1, y: 0 }"
-        :duration="600"
-        :delay="150"
       >
         <div id="title" class="flex flex-wrap text-wrap items-center font-semibold text-lg font-Raleway">
           {{ project.title }}
@@ -112,6 +107,11 @@ const projects = ref<Project[]>([
     title: "LoveSpot",
     repoLink: "https://github.com/rafaelffz/lovespot",
     stacks: ["front-end", "back-end"],
+  },
+  {
+    title: "EventosTec",
+    repoLink: "https://github.com/rafaelffz/eventostec",
+    stacks: ["back-end"],
   },
 ]);
 </script>
